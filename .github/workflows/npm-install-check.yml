@@ -24,10 +24,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run script dev to check for npm install
-        run: npm run dev
+      # Check that npm run dev works (i.e., the app runs correctly)
+      - name: Start the application
+        run: npm run dev &
+        continue-on-error: false # true Allow the workflow to continue even if npm run dev fails
 
-        # Check if the process is running (this checks if npm run dev worked)
+      # Wait for the app to be ready (adjust as needed)
+      - name: Wait for app to start
+        run: sleep 10 # Optional: Adjust sleep duration based on your app's startup time
+
+      # Check if the process is running (this checks if npm run dev worked)
       - name: Verify the app is running
         run: |
           if ! pgrep -f "npm run dev" > /dev/null; then
