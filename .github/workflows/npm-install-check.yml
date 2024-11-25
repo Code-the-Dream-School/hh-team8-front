@@ -26,3 +26,10 @@ jobs:
 
       - name: Run script dev to check for npm install
         run: npm run dev
+
+        # Check if the process is running (this checks if npm run dev worked)
+      - name: Verify the app is running
+        run: |
+          if ! pgrep -f "npm run dev" > /dev/null; then
+            echo "npm run dev did not run correctly" && exit 1
+          fi
