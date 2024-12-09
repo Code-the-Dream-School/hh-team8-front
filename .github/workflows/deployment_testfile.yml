@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main # The workflow triggers when there is a push to the 'main' branch
+  pull_request:
+    branches:
+      - main # Branch you want to trigger on
 
 jobs:
   test: # The 'test' job starts
