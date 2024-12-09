@@ -1,0 +1,31 @@
+name: "Get & Cache Dependencies" # The name of the workflow
+description: "Get the dependencies (via npm) and cache them." # Description of the workflow's purpose
+
+inputs:
+  caching:
+    description: "Whether to cache dependencies or not." # Description of the 'caching' input
+    required: false # This input is not required, it's optional
+    default: "true" # Default value for the 'caching' input is 'true'
+outputs:
+  used-cache:
+    description: "whether the cache was used." # Description of the output that indicates cache usage
+    value: ${{ steps.install.outputs.cache }} # The value of the output is taken from the 'install' step's cache output
+
+runs:
+  using: "composite" # Specifies that this action is a composite action
+  steps:
+    - name: Cache dependencies # Step to cache the dependencies
+      if: inputs.caching =='true' # This step runs only if 'caching' input is 'true'
+      id: cache # The step is given an ID of 'cache'
+      uses: actions/cache@v4 # Uses the 'actions/cache' action to cache the 'node_modules' directory
+      with:
+        path: node_modules # The 'node_modules' folder will be cached
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json')}} # The cache key is based on the hash of 'package-lock.json' files
+
+    - name: Install dependencies # Step to install dependencies if cache is not used or caching is disabled
+      id: install # The step is given an ID of 'install'
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true' # This step runs if cache is not used or caching is disabled
+      run: |
+        npm ci  # Installs dependencies via 'npm ci' which installs from the lock file
+        echo "cache=${{ inputs.caching }}" >> $GITHUB_OUTPUT  # Outputs the value of 'caching' to GitHub Actions output
+      shell: bash # The step will run with bash shell
