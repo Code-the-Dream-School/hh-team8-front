@@ -1,12 +1,16 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
+import pluginJest from "eslint-plugin-jest";
 
 export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
     },
     settings: {
       react: {
@@ -16,4 +20,12 @@ export default [
   },
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    plugins: {
+      jest: pluginJest,
+    },
+    rules: {
+      ...pluginJest.configs.recommended.rules,
+    },
+  },
 ];
