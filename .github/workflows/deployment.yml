@@ -39,3 +39,5 @@ jobs:
           if ! pgrep -f "npm run dev" > /dev/null; then
             echo "npm run dev did not run correctly" && exit 1
           fi
+      - name: Build the application
+        run: npm run build
