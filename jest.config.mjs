@@ -1,5 +1,6 @@
+// jest.config.mjs
 export default {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom", // Explicitly reference the jsdom environment
   transform: {
     "^.+\\.jsx?$": "babel-jest",
   },
