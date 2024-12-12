@@ -1,11 +1,12 @@
-// jest.config.mjs
 export default {
-  testEnvironment: "jest-environment-jsdom", // Explicitly reference the jsdom environment
+  testEnvironment: "jest-environment-jsdom",
   transform: {
     "^.+\\.jsx?$": "babel-jest",
   },
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  setupFilesAfterEnv: [
+    "@testing-library/jest-dom", // Correct the import here
+  ],
 };
