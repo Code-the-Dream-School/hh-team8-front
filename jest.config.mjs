@@ -8,5 +8,5 @@ export default {
   },
   setupFilesAfterEnv: [
     "@testing-library/jest-dom", // Correct the import here
-  ],
+  ]
 };
