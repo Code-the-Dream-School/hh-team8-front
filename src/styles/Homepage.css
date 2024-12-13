@@ -1,0 +1,59 @@
+.section1-container{
+    margin-top: 256px;
+}
+.section1{
+    display: flex;
+    position: relative;
+}
+.content-area{
+    width: 50%;
+    padding-right: 52px;
+}
+.section-image{
+    width: 50%;
+}
+h1{
+    font-size: 86px;
+    margin: 0 0 24px 0;
+    line-height: 100%;
+}
+.cycle{
+    position: absolute;
+    top: -50px;
+    left: -70px;
+    z-index: -1;
+}
+.top-text{
+    font-size: 20px;
+    line-height: 36px;
+    margin: 0 0 42px 0;
+}
+.button-area{
+    display: flex;
+}
+.share-button{
+    background-color: #CF64EE;
+    color: white;
+    font-size: 16px;
+    line-height: 100%;
+    font-weight: 600;
+    padding: 24px;
+    border-width: 0;
+    border-style: none;
+    border-radius: 999px;
+    margin-right: 24px;
+}
+
+.explore-button{
+    background-color: #183961;
+    font-size: 16px;
+    line-height: 100%;
+    font-weight: 600;
+    padding: 23px 24px;
+    border-width: 0;
+    border-style: none;
+    border-radius: 999px;
+    border: solid 1px #63E9EE;
+    box-sizing: border-box;
+    color: #63E9EE;
+}
