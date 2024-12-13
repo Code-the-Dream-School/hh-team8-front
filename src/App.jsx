@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllData } from './util/index';
+import Navbar from '../src/components/navbar'
+
 
 const URL = 'http://localhost:8000/api/v1/';
 function App() {
@@ -21,7 +23,8 @@ function App() {
 
   return (
     <>
-      <h1>{message}</h1>
+    <Navbar />
+    <h1>{message}</h1>
     </>
   );
 
