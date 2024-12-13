@@ -1,0 +1,39 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(36px);
+    height: 144px;
+    z-index: 1;
+}
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+.menu{
+    display: flex;
+    align-items: center;
+}
+.menulink{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 64px;
+    font-family: Outfit;
+    font-weight: 600;
+    font-size: 20px;
+}
+.logo{
+    width: 120px;
+    height: 120px;
+}
+.usericon{
+    width: 56px;
+    height: 56px;
+}
