@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllData } from './util/index';
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 import HomePage from './components/HomePage';
 
 
