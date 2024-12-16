@@ -70,3 +70,26 @@ h1{
     font-size: 20px;
     font-weight: 700;
 }
+.section2{
+    display: flex;
+    margin-top: 88px;
+}
+.section-image2{
+    width: 50%;
+    height: auto;
+}
+.content-area-2{
+    width: 50%;
+    padding-left: 91px;
+    margin-top: -38px;
+}
+.section2-title{
+    margin-top: 50px;
+    font-size: 35px;
+    font-weight: 600;
+}
+.info-text{
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 400;
+}
