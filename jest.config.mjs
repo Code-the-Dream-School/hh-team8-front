@@ -1,3 +1,4 @@
+// jest.config.mjs
 export default {
   testEnvironment: "jest-environment-jsdom",
   transform: {
@@ -8,5 +9,5 @@ export default {
   },
   setupFilesAfterEnv: [
     "@testing-library/jest-dom", // Correct the import here
-  ],
+  ]
 };
