@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+html{
+    background-color: #000235;
+}
 
 body{
     background-color: #000235;
