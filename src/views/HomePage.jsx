@@ -1,4 +1,7 @@
 import React from "react";
+import { Input } from "@chakra-ui/react"
+import { Field } from "../components/ui/field"
+import { Button } from "../components/ui/button"
 import "../styles/Homepage.css";
 
 const HomePage = () => {
@@ -7,7 +10,9 @@ const HomePage = () => {
         <div className = 'section1'>
             <img className="cycle" src="./images/cycle.png"></img>
             <div className="content-area">
+                <div className="build-title">
                 <h1>Build.<br /> Share.<br /> Review.<br /> Repeat.</h1>
+                </div>
                 <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
                 <div className="buton-area">
                     <button class = "share-button">SHARE A PROJECT</button>
@@ -32,6 +37,19 @@ const HomePage = () => {
                 </div>         
             </div>
         </div>
+        <div className="register-rectangle">
+            <div className="text-area-register">
+                <p className="register-title">Stay Updated on the Latest Projects!</p>
+                <p>Don’t miss out on exciting new ideas and creative works from our vibrant<br />community.</p>
+            </div>
+            <div className="email-area-register">
+                <Field className="register-email" label="Email" required>
+                    <Input className="register-emailbox" placeholder="Enter your email" />
+                </Field>
+                <Button className="register-button" size="md">Register NOW!</Button>
+            </div>
+        </div>
+        <img className="ctd-logo" src="./images/ctd-logo.png"></img>
     </div>
     );
 }
