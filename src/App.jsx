@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllData } from './util/index';
 import Navbar from './components/Navbar'
-import HomePage from './components/HomePage';
+import HomePage from './views/HomePage';
 
 
 const URL = 'http://localhost:8000/api/v1/';
