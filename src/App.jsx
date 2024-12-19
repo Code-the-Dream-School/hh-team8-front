@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getAllData } from './util/index';
 import { Provider } from "./components/ui/provider"
 import Navbar from './components/Navbar'
@@ -30,7 +30,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
         <Route path="/share-project" element={<ShareAProject />} />
         <Route path="/message" element={<h1>{message}</h1>} />
       </Routes>
