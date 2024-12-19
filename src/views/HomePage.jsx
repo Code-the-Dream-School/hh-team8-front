@@ -3,8 +3,12 @@ import { Input } from "@chakra-ui/react"
 import { Field } from "../components/ui/field"
 import { Button } from "../components/ui/button"
 import "../styles/Homepage.css";
+import {useNavigate} from 'react-router-dom';
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
+
     return(
     <div className="section1-container">
         <div className = 'section1'>
@@ -15,7 +19,10 @@ const HomePage = () => {
                 </div>
                 <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
                 <div className="buton-area">
-                    <button class = "share-button">SHARE A PROJECT</button>
+                    <button
+                    class = "share-button"
+                    onClick={() => navigate('/share-project')}
+                    >SHARE A PROJECT</button>
                     <button class = "explore-button">EXPLORE PROJECTS</button>
                 </div>            
             </div>
