@@ -3,6 +3,7 @@ export default {
   testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: [
     "@testing-library/jest-dom", // Correct the import here
+    "<rootDir>/src/setupTests.js", // Add this line to include the setup file
   ],
   // Jest configuration
   moduleNameMapper: {

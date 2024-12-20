@@ -1,6 +1,7 @@
 // app.test.js
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import { getAllData } from "./util/index";
 
@@ -23,7 +24,13 @@ describe("App Component", () => {
   });
 
   test("renders the message from the API", async () => {
-    render(<App />);
+    render(
+      <MemoryRouter initialEntries={["/message"]}>
+        <Routes>
+          <Route path="*" element={<App />} />
+        </Routes>
+      </MemoryRouter>
+    );
 
     // Wait for the message to appear
     await waitFor(() =>
@@ -32,7 +39,13 @@ describe("App Component", () => {
   });
 
   test("calls getAllData with the correct URL", async () => {
-    render(<App />);
+    render(
+      <MemoryRouter initialEntries={["/message"]}>
+        <Routes>
+          <Route path="*" element={<App />} />
+        </Routes>
+      </MemoryRouter>
+    );
 
     // Wait for the data to be fetched
     await waitFor(() =>

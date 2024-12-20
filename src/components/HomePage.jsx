@@ -18,8 +18,8 @@ const HomePage = () => {
             next level.
           </p>
           <div className="buton-area">
-            <button className="share-button">SHARE A PROJECT</button>
-            <button className="explore-button">EXPLORE PROJECTS</button>
+            <button class="share-button">SHARE A PROJECT</button>
+            <button class="explore-button">EXPLORE PROJECTS</button>
           </div>
         </div>
         <img className="section-image" src="./images/sectionimg-1.png"></img>
