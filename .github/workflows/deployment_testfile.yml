@@ -1,0 +1,74 @@
+name: Deploy website # The name of the workflow
+
+on:
+  push:
+    branches:
+      - main # The workflow triggers when there is a push to the 'main' branch
+  pull_request:
+    branches:
+      - main # Branch you want to trigger on
+
+jobs:
+  test: # The 'test' job starts
+    runs-on: ubuntu-latest # The job runs on the latest Ubuntu environment
+    steps:
+      - name: Get Code # Step to checkout the code from the repository
+        uses: actions/checkout@v4 # Uses the 'checkout' action to get the code
+
+      - name: Load & Cache dependencies # Step to load and cache dependencies
+        id: cache-deps # Set an ID to reference this step in subsequent steps
+        uses: ./.github/actions/cached-deps # Custom action to handle dependency caching
+        with:
+          caching: "false" # Disables caching for this run
+
+      - name: Output informations # Step to output cache status
+        run: echo "Cache used? ${{ steps.cache-deps.outputs.used-cache }}" # Echoes whether the cache was used
+
+      - name: Lint code # Step to lint the code
+        run: npm run lint # Runs 'npm run lint' to check code style
+
+      - name: Test code # Step to test the code
+        run: npm run test # Runs 'npm run test' to execute tests
+
+  build: # The 'build' job starts after 'test' job completes
+    needs: test # 'build' job depends on the completion of 'test' job
+    runs-on: ubuntu-latest # The job runs on the latest Ubuntu environment
+    outputs:
+      script-file: ${{ steps.publish.outputs.script-file-name }} # Outputs the JS script filename for further use
+    steps:
+      - name: Get Code # Step to checkout the code from the repository
+        uses: actions/checkout@v4 # Uses the 'checkout' action to get the code
+
+      - name: Load & Cache dependencies # Step to load and cache dependencies
+        uses: ./.github/actions/cached-deps # Custom action to handle dependency caching
+
+      - name: Build Website # Step to build the website
+        run: npm run build # Executes the 'npm run build' command to create production assets
+
+      - name: Publish JS filename # Step to find and publish the JS file name from build output
+        id: publish # Assigns an ID to reference this step
+        run: find dist/assets/*.js -type f -execdir echo 'script-file-name={}' >> $GITHUB_OUTPUT ';' # Finds the JS file and outputs the filename to GitHub Actions output
+
+      - name: Upload artifacts # Step to upload build artifacts
+        uses: actions/upload-artifact@v4 # Uses the 'upload-artifact' action to upload the build output
+        with:
+          name: dist-files # Artifact name
+          path: dist # The path to the build artifacts
+
+  deploy: # The 'deploy' job starts after the 'build' job completes
+    needs: build # 'deploy' job depends on the completion of 'build' job
+    runs-on: ubuntu-latest # The job runs on the latest Ubuntu environment
+    steps:
+      - name: Get build artifacts # Step to download the build artifacts
+        uses: actions/download-artifact@v4 # Uses the 'download-artifact' action to download the artifacts from the previous job
+        with:
+          name: dist-files # The name of the artifact to download
+
+      - name: Output contents # Step to list the contents of the directory
+        run: ls # Lists the files in the current directory
+
+      - name: Output filename # Step to output the script filename used in the build
+        run: echo "${{needs.build.outputs.script-file}}" # Outputs the JS file name from the build job
+
+      - name: Deploy # Step to deploy the website
+        run: echo "Deploying ..." # A placeholder for the actual deployment step
