@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getAllData } from './util/index';
+import { Provider } from "./components/ui/provider"
 import Navbar from './components/Navbar'
-import HomePage from './components/HomePage';
+import HomePage from './views/HomePage';
+import ShareAProject from './views/ShareAProject';
 
 
 const URL = 'http://localhost:8000/api/v1/';
@@ -23,13 +26,18 @@ function App() {
   }, []);
 
   return (
-    <>
-    <Navbar />
-    <HomePage />
-    <h1>{message}</h1>
-    </>
+    <Provider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
+        <Route path="/share-project" element={<ShareAProject />} />
+        <Route path="/message" element={<h1>{message}</h1>} />
+      </Routes>
+    </Provider>
   );
-
 }
+
 
 export default App
