@@ -2,6 +2,7 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import pluginJest from "eslint-plugin-jest";
+
 export default [
   // Apply to JavaScript and React files
   {
@@ -10,6 +11,7 @@ export default [
       globals: {
         ...globals.browser, // Browser globals like window, document
         ...globals.jest, // Jest globals like describe, test, expect
+        global: "readonly", // Add global to the list of allowed globals
       },
     },
     settings: {
@@ -29,6 +31,9 @@ export default [
     },
     rules: {
       ...pluginJest.configs.recommended.rules, // Add Jest recommended rules
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/no-unescaped-entities": "off",
     },
   },
 ];

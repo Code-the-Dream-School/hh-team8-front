@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { getAllData } from './util/index';
-import { Provider } from "./components/ui/provider"
-import Navbar from './components/Navbar'
-import HomePage from './views/HomePage';
-import ShareAProject from './views/ShareAProject';
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { getAllData } from "./util/index";
+import { Provider } from "./components/ui/provider";
+import Navbar from "./components/Navbar";
+import HomePage from "./views/HomePage";
+import ShareAProject from "./views/ShareAProject";
 
-
-const URL = 'http://localhost:8000/api/v1/';
+const URL = "http://localhost:8000/api/v1/";
 function App() {
-  
-  const [message, setMessage] = useState(''); 
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-
     (async () => {
-      const myData = await getAllData(URL)
+      const myData = await getAllData(URL);
       setMessage(myData.data);
     })();
-      
-    return () => {
-      console.log('unmounting');
-    }
 
+    return () => {
+      console.log("unmounting");
+    };
   }, []);
 
   return (
@@ -39,5 +35,4 @@ function App() {
   );
 }
 
-
-export default App
+export default App;
