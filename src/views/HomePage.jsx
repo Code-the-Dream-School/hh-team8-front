@@ -19,15 +19,15 @@ const HomePage = () => {
                 <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
                 <div className="buton-area">
                     <button
-                    class = "share-button"
+                    className = "share-button"
                     onClick={() => navigate('/share-project')}>
                     SHARE A PROJECT</button>
-                    <button class = "explore-button"
+                    <button className = "explore-button"
                     onClick={() => navigate('/explore-project')}>
                     EXPLORE PROJECTS</button>
                 </div>            
             </div>
-            <img class="section-image" src="./images/sectionimg-1.png"></img>
+            <img className="section-image" src="./images/sectionimg-1.png"></img>
       </div>
       <div className="home-data-rectangle">
         <p>PROJECTS SHARED: 1,024+</p>
