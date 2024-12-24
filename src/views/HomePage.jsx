@@ -28,8 +28,6 @@ const HomePage = () => {
                 </div>            
             </div>
             <img class="section-image" src="./images/sectionimg-1.png"></img>
-        </div>
-        <img className="section-image" src="./images/sectionimg-1.png"></img>
       </div>
       <div className="home-data-rectangle">
         <p>PROJECTS SHARED: 1,024+</p>
