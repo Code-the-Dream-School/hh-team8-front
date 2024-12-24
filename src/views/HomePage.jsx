@@ -21,9 +21,11 @@ const HomePage = () => {
                 <div className="buton-area">
                     <button
                     class = "share-button"
-                    onClick={() => navigate('/share-project')}
-                    >SHARE A PROJECT</button>
-                    <button class = "explore-button">EXPLORE PROJECTS</button>
+                    onClick={() => navigate('/share-project')}>
+                    SHARE A PROJECT</button>
+                    <button class = "explore-button"
+                    onClick={() => navigate('/explore-project')}>
+                    EXPLORE PROJECTS</button>
                 </div>            
             </div>
             <img class="section-image" src="./images/sectionimg-1.png"></img>
