@@ -10,32 +10,24 @@ const HomePage = () => {
 
   return (
     <div className="section1-container">
-      <div className="section1">
-        <img className="cycle" src="./images/cycle.png"></img>
-        <div className="content-area">
-          <div className="build-title">
-            <h1>
-              Build.
-              <br /> Share.
-              <br /> Review.
-              <br /> Repeat.
-            </h1>
-          </div>
-          <p className="top-text">
-            Showcase your work and connect with peers who can help you reach the
-            next level.
-          </p>
-          <div className="buton-area">
-            <button
-              className="share-button"
-              onClick={() => navigate("/share-project")}
-            >
-              SHARE A PROJECT
-            </button>
-            <button className="explore-button">EXPLORE PROJECTS</button>
-          </div>
-        </div>
-        <img className="section-image" src="./images/sectionimg-1.png"></img>
+        <div className = 'section1'>
+            <img className="cycle" src="./images/cycle.png"></img>
+            <div className="content-area">
+                <div className="build-title">
+                <h1>Build.<br /> Share.<br /> Review.<br /> Repeat.</h1>
+                </div>
+                <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
+                <div className="buton-area">
+                    <button
+                    className = "share-button"
+                    onClick={() => navigate('/share-project')}>
+                    SHARE A PROJECT</button>
+                    <button className = "explore-button"
+                    onClick={() => navigate('/explore-project')}>
+                    EXPLORE PROJECTS</button>
+                </div>            
+            </div>
+            <img className="section-image" src="./images/sectionimg-1.png"></img>
       </div>
       <div className="home-data-rectangle">
         <p>PROJECTS SHARED: 1,024+</p>

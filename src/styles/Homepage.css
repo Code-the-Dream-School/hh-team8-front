@@ -60,6 +60,7 @@ h1{
     border: solid 1px #63E9EE;
     box-sizing: border-box;
     color: #63E9EE;
+    cursor: pointer;
 }
 .home-data-rectangle{
     display: flex;
