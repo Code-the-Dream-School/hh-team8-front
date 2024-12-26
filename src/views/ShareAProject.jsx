@@ -13,19 +13,23 @@ const ShareAProject = () => {
         frameworks: [],
         liveDemoURL: '',
         comments: '',
+        date: ''
       });
     
       const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
-          const response = await fetch('http://localhost:8001/projects', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newProject),
-          });
+            const response = await fetch('http://localhost:8001/projects', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                ...newProject,
+                date: new Date().toISOString()
+              }),
+            });
     
           if (response.ok) {
             console.log('Project submitted successfully:', newProject);
@@ -36,6 +40,7 @@ const ShareAProject = () => {
               frameworks: [],
               liveDemoURL: '',
               comments: '',
+              date: '',
             });
           } else {
             console.error('Failed to submit project');
@@ -99,22 +104,22 @@ const ShareAProject = () => {
                     />
                 </Field>
                 <Fieldset.Root>
-                    <CheckboxGroup defaultValue={newProject.frameworks} name="framework">
+                    <CheckboxGroup key={newProject.frameworks.length} defaultValue={newProject.frameworks} name="framework">
                         <Fieldset.Legend mb="2" color='white' marginTop='36px' marginBottom='20px' fontSize='21px'>
                         Frameworks / Languages
                         </Fieldset.Legend>
                         <Fieldset.Content gap='16px'>
-                            <Checkbox value="react" colorPalette='cyan' variant='solid'
+                            <Checkbox value="React" colorPalette='cyan' variant='solid'
                             checked={newProject.frameworks.includes('React')}
                             onChange={() => handleCheckboxChange('React')}>                         
                             <span style={{ fontSize: "20px", display: 'flex', alignItems: 'center'}}>React</span>
                             </Checkbox>
-                            <Checkbox value="node.js" colorPalette='green' variant='solid'
+                            <Checkbox value="Node.js" colorPalette='green' variant='solid'
                             checked={newProject.frameworks.includes('Node.js')}
                             onChange={() => handleCheckboxChange('Node.js')}>
                             <span style={{ fontSize: "20px", display: 'flex', alignItems: 'center'}}>Node.js</span>
                             </Checkbox>
-                            <Checkbox value="htmlcss" colorPalette='purple' variant='solid'
+                            <Checkbox value="HTML / CSS" colorPalette='purple' variant='solid'
                             checked={newProject.frameworks.includes('HTML / CSS')}
                             onChange={() => handleCheckboxChange('HTML / CSS')}>
                             <span style={{ fontSize: "20px", display: 'flex', alignItems: 'center'}}>HTML / CSS</span>
