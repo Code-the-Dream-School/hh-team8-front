@@ -3,7 +3,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { getAllData } from "./util/index";
 import { Provider } from "./components/ui/provider";
 import Navbar from "./components/Navbar";
-import HomePage from "./views/HomePage";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import ForgotPassword from "./components/ForgotPassword";
+//import HomePage from "./views/HomePage";
 import ShareAProject from "./views/ShareAProject";
 
 const URL = "http://localhost:8000/api/v1/";
@@ -25,9 +28,11 @@ function App() {
     <Provider>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" exact element={<Login />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
+        <Route path="/register" exact element={<Register />} />
+        <Route path="/reset-password" exact element={<ForgotPassword />} />
         <Route path="/share-project" element={<ShareAProject />} />
         <Route path="/message" element={<h1>{message}</h1>} />
       </Routes>
