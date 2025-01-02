@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import bg from "./bg/signin.svg";
-import bgimg from "./bg/backimg.jpg";
+import Grid from "@mui/material/Grid2";
+import bg from "../../images/signin.svg";
+import bgimg from "../../images/backimg.jpg";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -92,7 +92,7 @@ export default function Register() {
       >
         <Box sx={boxstyle}>
           <Grid container>
-            <Grid item xs={12} sm={12} lg={6}>
+            <Grid size={{ xs: 12, sm: 12, lg: 6 }}>
               <Box
                 style={{
                   backgroundImage: `url(${bg})`,
@@ -105,13 +105,13 @@ export default function Register() {
                 }}
               ></Box>
             </Grid>
-            <Grid item xs={12} sm={12} lg={6}>
+            <Grid size={{ xs: 12, sm: 12, lg: 6 }}>
               <Box
                 style={{
                   backgroundSize: "cover",
                   height: "70vh",
                   minHeight: "500px",
-                  backgroundColor: "#3b33d5",
+                  backgroundColor: "#110e4b",
                 }}
               >
                 <ThemeProvider theme={darkTheme}>
@@ -134,7 +134,7 @@ export default function Register() {
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>
-                        <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
+                        <Grid size={{ xs: 12 }} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
                             fullWidth
@@ -144,7 +144,7 @@ export default function Register() {
                             autoComplete="email"
                           />
                         </Grid>
-                        <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
+                        <Grid size={{ xs: 12 }} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
                             fullWidth
@@ -155,7 +155,7 @@ export default function Register() {
                             autoComplete="new-password"
                           />
                         </Grid>
-                        <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
+                        <Grid size={{ xs: 12 }} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
                             fullWidth
@@ -166,7 +166,7 @@ export default function Register() {
                             autoComplete="new-password"
                           />
                         </Grid>
-                        <Grid item xs={12} sx={{ ml: "5em", mr: "5em" }}>
+                        <Grid size={{ xs: 12 }} sx={{ ml: "5em", mr: "5em" }}>
                           <Button
                             type="submit"
                             variant="contained"
@@ -184,7 +184,7 @@ export default function Register() {
                             Register
                           </Button>
                         </Grid>
-                        <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
+                        <Grid size={{ xs: 12 }} sx={{ ml: "3em", mr: "3em" }}>
                           <Stack direction="row" spacing={2}>
                             <Typography
                               variant="body1"

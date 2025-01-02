@@ -13,6 +13,9 @@ const Navbar = () => {
           <a className="menulink" href="">
             ABOUT US
           </a>
+          <a className="menulink" href="/">
+            Logout
+          </a>
           <a href="">
             <img
               className="usericon"

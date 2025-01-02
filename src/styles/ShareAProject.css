@@ -1,57 +1,56 @@
-.share-project-container{
-    margin-top: 204px;
-    display: flex;
-    
+.share-project-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 204px;
 }
-.sp-info-container{
-    width: 50%;
+.sp-info-container {
+  width: 50%;
 }
-.sp-info-text-area{
-    width: 473px;
-    height: 751px;
-    background-color: rgba(99, 233, 238, 0.24);
-    border-radius: 24px;
-    padding: 64px 32px 351px 32px;
-    position: relative;
-    
+.sp-info-text-area {
+  width: 473px;
+  height: 751px;
+  background-color: rgba(99, 233, 238, 0.24);
+  border-radius: 24px;
+  padding: 64px 32px 351px 32px;
+  position: relative;
 }
-.sp-info-header{
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 48px;
-    margin-bottom: 48px;
+.sp-info-header {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 48px;
+  margin-bottom: 48px;
 }
-.sp-info-text{
-    font-size: 20;
-    font-weight: 300;
-    line-height: 32px;
+.sp-info-text {
+  font-size: 20;
+  font-weight: 300;
+  line-height: 32px;
 }
 .thumbs-up {
-    position: absolute; /* Allow the element to position itself within the container */
-    bottom: 0;          /* Push to the bottom of the container */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 320px;
-    
+  position: absolute; /* Allow the element to position itself within the container */
+  bottom: 0; /* Push to the bottom of the container */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 320px;
 }
-.sp-form-container{
-    width: 50%;
+.sp-form-container {
+  width: 50%;
 }
-.sp-form-header{
-    font-size: 48px;
-    font-weight: 600;
+.sp-form-header {
+  font-size: 48px;
+  font-weight: 600;
 }
-.sp-button{
-    margin-top: 36px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 199px;
-    height: 64px;
-    border-radius: 100px;
-    background-color: #CF64EE;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.9px;
+.sp-button {
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 199px;
+  height: 64px;
+  border-radius: 100px;
+  background-color: #cf64ee;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
 }
