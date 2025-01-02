@@ -93,7 +93,6 @@ export default function ForgotPassword() {
               <Box
                 style={{
                   backgroundImage: `url(${bg})`,
-                  backgroundSize: "cover",
                   backgroundSize: "100% 105%",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",
