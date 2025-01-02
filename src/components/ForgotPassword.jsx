@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
-import bg from "../../images/signin.svg";
+import bg from "../../images/CTDLogo.jpg";
 import bgimg from "../../images/backimg.jpg";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -94,7 +94,10 @@ export default function ForgotPassword() {
                 style={{
                   backgroundImage: `url(${bg})`,
                   backgroundSize: "cover",
-                  marginTop: "40px",
+                  backgroundSize: "100% 105%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  marginTop: "35px",
                   marginLeft: "15px",
                   marginRight: "15px",
                   height: "63vh",
