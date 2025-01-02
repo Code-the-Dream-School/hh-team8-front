@@ -8,7 +8,8 @@ export default {
   // Jest configuration
   moduleNameMapper: {
     "\\.css$": "<rootDir>/__mocks__/styleMock.js",
-    "\\.module\\.css$": "<rootDir>/__mocks__/styleMock.js", // Optional: for CSS modules
+    "\\.module\\.css$": "<rootDir>/__mocks__/styleMock.js", // Optional: for CSS modules,
+    "\\.(jpg|jpeg|png|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
   transform: {
     "^.+\\.jsx?$": "babel-jest", // Ensure Babel processes JavaScript/JSX
