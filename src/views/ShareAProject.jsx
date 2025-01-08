@@ -3,6 +3,7 @@ import "../styles/ShareAProject.css";
 import { Input, CheckboxGroup, Fieldset, Textarea, Button } from "@chakra-ui/react"
 import { Field } from "../components/ui/field"
 import { Checkbox } from "../components/ui/checkbox"
+import { Toaster, toaster } from "../components/ui/toaster"
 
 const ShareAProject = () => {
 
@@ -32,7 +33,14 @@ const ShareAProject = () => {
             });
     
           if (response.ok) {
-            console.log('Project submitted successfully:', newProject);
+            toaster.create({
+                title: 'Project submitted succesfully!',
+                type: 'success',
+                duration: 4000,
+                action: {
+                  label: "x",
+                }
+            })
             setNewProject({
               title: '',
               githubURL: '',
@@ -46,7 +54,14 @@ const ShareAProject = () => {
             console.error('Failed to submit project');
           }
         } catch (error) {
-          console.error('Error submitting project:', error);
+              toaster.create({
+              title: `Error submitting project: ${error.message}`,
+              type: 'error',
+              duration: 4000,
+              action: {
+                label: "x",
+              }
+              });
         }
       };
     
@@ -173,6 +188,7 @@ const ShareAProject = () => {
                         onChange={(e) => setNewProject({ ...newProject, comments: e.target.value })}
                     />
                     <Button className='sp-button' variant="solid" type="submit">SUBMIT PROJECT</Button>
+                    <Toaster />
                 </Field>
             </div>
         </div>
