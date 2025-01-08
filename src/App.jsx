@@ -15,8 +15,8 @@ function App() {
   useEffect(() => {
     (async () => {
       const myData = await getAllData(URL);
-      //myData.data
-      setMessage("This is a full stack app!");
+
+      setMessage(myData.data);
     })();
 
     return () => {
