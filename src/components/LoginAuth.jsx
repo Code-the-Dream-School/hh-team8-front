@@ -6,7 +6,6 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Button,
   Box,
   Flex,
   VStack,
@@ -18,7 +17,7 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 
 const LoginAuth = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   const [formType, setFormType] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
 

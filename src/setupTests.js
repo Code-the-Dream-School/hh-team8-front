@@ -1,13 +1,19 @@
 import { TextEncoder, TextDecoder } from "util";
+import "@testing-library/jest-dom";
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
+
+console.log("TextEncoder and TextDecoder polyfills applied");
 
 // Polyfill for structuredClone in Jest environment
 if (typeof global.structuredClone === "undefined") {
   global.structuredClone = (value) => {
     return JSON.parse(JSON.stringify(value)); // A simple fallback for deep cloning
   };
+  console.log("structuredClone polyfill applied");
+} else {
+  console.log("structuredClone already exists");
 }
 
 // Mock window.matchMedia
@@ -24,3 +30,5 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: jest.fn(),
   })),
 });
+
+console.log("window.matchMedia mock applied");
