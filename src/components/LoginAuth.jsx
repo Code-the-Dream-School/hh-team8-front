@@ -1,5 +1,5 @@
 import { Box, HStack, VStack, Image } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   DialogBody,
   DialogContent,

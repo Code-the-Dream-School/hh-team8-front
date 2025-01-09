@@ -1,10 +1,9 @@
-import React from "react";
 import { Input, HStack, VStack, Link, Button } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
 import { LuUser } from "react-icons/lu";
-import { useState } from "react";
+import React, { useState } from "react";
 const SignUp = ({ onFormSwitch }) => {
   const [value, setValue] = useState("");
   return (
