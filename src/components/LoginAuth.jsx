@@ -1,7 +1,6 @@
 import { Box, HStack, VStack, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import {
-  DialogActionTrigger,
   DialogBody,
   DialogContent,
   DialogFooter,
