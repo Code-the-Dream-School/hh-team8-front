@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { getAllData } from './util/index';
-import { Provider } from "./components/ui/provider"
-import Navbar from './components/Navbar'
-import HomePage from './views/HomePage';
-import ShareAProject from './views/ShareAProject';
-import ExploreProjects from './views/ExploreProjects';
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { getAllData } from "./util/index";
+import { Provider } from "./components/ui/provider";
+import Navbar from "./components/Navbar";
+import HomePage from "./views/HomePage";
+import ShareAProject from "./views/ShareAProject";
+import ExploreProjects from "./views/ExploreProjects";
 
-const URL = 'http://localhost:8000/api/v1/';
+const URL = "http://localhost:8000/api/v1/";
 
 function App() {
   const [message, setMessage] = useState("");
