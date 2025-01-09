@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, HStack, VStack, Link, Button } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
-import { Checkbox } from "./ui/Checkbox";
+import { Checkbox } from "./ui/checkbox";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
 import { LuUser } from "react-icons/lu";
