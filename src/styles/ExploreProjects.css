@@ -21,6 +21,7 @@
     width: 338px;
     border-color: rgba(255, 255, 255, 0.24);
     border-width: 0.1em;
+    position: relative;
 }
 .project-details{
     padding: 59px 16px 80px 16px;
@@ -51,4 +52,25 @@
     width: 145px;
     height: 40px;
     background-color: rgba(99, 233, 238, 0.24);
+}
+.like-comment-details{
+    position: absolute;
+    top: 5%;
+    right: 12px; 
+}
+.like-img{
+    width: 30px;
+    height: auto;
+}
+.dislike-img{
+    width: 30px;
+    height: auto;
+}
+.details-img{
+    width: 30px;
+    height: auto;
+}
+.comments-img{
+    width: 30px;
+    height: auto;
 }

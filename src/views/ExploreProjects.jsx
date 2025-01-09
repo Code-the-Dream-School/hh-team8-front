@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "../styles/ExploreProjects.css";
-import { Badge, Button } from "@chakra-ui/react"
+import { 
+  Badge, 
+  Button, 
+  IconButton, 
+  Stack } from "@chakra-ui/react"
+
 
 const ExploreProjects = () => {
   
@@ -33,6 +38,22 @@ const ExploreProjects = () => {
             <div key={index} 
             className='project-tile'>
                 <div className='project-details'>
+                    <div className='like-comment-details'>
+                    <Stack>
+                      <IconButton className='details-button' variant="unstyled">
+                        <img className="details-img" src="./images/details.svg" alt='details'></img>
+                      </IconButton>
+                      <IconButton className='like-button' variant="unstyled">
+                        <img className="like-img" src="./images/like.svg" alt='like'></img>
+                      </IconButton>
+                      <IconButton className='dislike-button' variant="unstyled">
+                        <img className="dislike-img" src="./images/dislike.svg" alt='dislike'></img>
+                      </IconButton>
+                      <IconButton className='comment-button' variant="unstyled">
+                        <img className="comments-img" src="./images/comments.svg" alt='comments'></img>
+                      </IconButton>
+                    </Stack>
+                    </div>
                     <p className='project-date'
                     style={{ color: 'rgba(255, 255, 255, 0.48)' }}>
                         {new Date(project.date).toLocaleDateString('en-US', {
