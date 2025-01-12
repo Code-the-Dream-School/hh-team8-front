@@ -1,0 +1,8 @@
+.dialog-container{
+    background-color: #181736;
+    border: 2px solid #564F8E;
+    border-radius: 24px;
+}
+.register-component{
+    backdrop-filter: blur(10px);
+}
