@@ -1,16 +1,17 @@
 import React from "react";
-import { Input, Button, HStack, Link } from "@chakra-ui/react";
+import { Input, Button, HStack, Link, Text } from "@chakra-ui/react";
 import { Field } from "./ui/field";
 const ForgotPassword = ({ onFormSwitch }) => (
   <>
-    <Field label="Email" required helperText="We'll never share your email.">
-      <Input placeholder="Enter your email" />
+    
+    <Field marginTop='32px' label='Email' required helperText="We'll send you instructions for renewing your password.">
+        <Input placeholder="Enter your email" w='406px'/>
     </Field>
-    <Button bg="orange.700" width="100%" mt="4">
-      Send Link
+    <Button backgroundColor='orange.700' width="406px" h='70px' borderRadius='100px' marginBottom='25px' marginTop='32px'>
+        <Text fontWeight='800' fontSize='16px' letterSpacing='0.9px' color='white'>SEND EMAIL</Text>
     </Button>
     <HStack justifyContent="center" mt="4">
-      <Link color="teal.500" onClick={() => onFormSwitch("login")}>
+      <Link color="teal.500" onClick={() => onFormSwitch("login")} marginBottom='25px' fontWeight='700'>
         Back to Sign In
       </Link>
     </HStack>

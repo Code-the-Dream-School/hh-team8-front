@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import {
   DialogBody,
   DialogContent,
-  DialogFooter,
-  DialogHeader,
   DialogRoot,
-  DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
+import "../styles/login.css";
+
+
 const CardWithForm = () => {
   const ref = useRef < HTMLInputElement > null;
   const [formType, setFormType] = useState("login");
@@ -29,7 +29,8 @@ const CardWithForm = () => {
     }
   };
   return (
-    <DialogRoot placement="bottom" initialFocusEl={() => ref.current}>
+    
+    <DialogRoot placement="center" initialFocusEl={() => ref.current}>
       <DialogTrigger asChild>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
@@ -39,40 +40,48 @@ const CardWithForm = () => {
           />
         </a>
       </DialogTrigger>
-      <DialogContent maxWidth="900px" padding="4" bg="blue.950">
-        <DialogHeader>
-          <DialogTitle></DialogTitle>
-        </DialogHeader>
+      <DialogContent maxWidth="1100px" pt="16px" className='dialog-container' backdropFilter="blur(10px)">
         <DialogBody>
-          <HStack spacing={8} align="start">
-            {/* Left section with image and text */}
-            <VStack spacing={4} align="start" w="100%">
+          <HStack spacing={8} align="stretch" h="auto">
+            {/* Left section with image */}
+            <Box
+              width="54%" // Fixed width for the image container
+              height="auto" // Let height be controlled by right-hand content
+              borderRadius="12px"
+              overflow="hidden"
+              flexShrink={0} // Prevent shrinking of the container
+              marginRight='16px'
+            >
               <Box
-                flex="1"
-                bg="gray.100"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
+                width="100%"
+                height="100%"
+                display="block"
+                position="relative"
               >
                 <Image
-                  src="../images/CTDLogo.jpg"
+                  src="../images/register.png"
                   alt="Code The Dream Logo"
-                  boxSize="100%"
                   objectFit="cover"
+                  position="absolute"
+                  top={0}
+                  left={0}
                   width="100%"
                   height="100%"
                 />
               </Box>
-            </VStack>
-            {/* Right section with login form */}
-            <VStack spacing={4} align="start" w="100%">
+            </Box>
+
+            {/* Right section with form */}
+            <VStack spacing={4} align="start" flex="1">
               {renderFormContent()}
             </VStack>
           </HStack>
         </DialogBody>
-        <DialogFooter></DialogFooter>
       </DialogContent>
     </DialogRoot>
+
+
+
   );
 };
 
