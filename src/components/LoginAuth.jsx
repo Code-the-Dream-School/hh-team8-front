@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import {
   DialogBody,
   DialogContent,
-  DialogFooter,
-  DialogHeader,
   DialogRoot,
-  DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
