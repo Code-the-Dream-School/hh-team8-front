@@ -12,7 +12,6 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import "../styles/login.css";
 
-
 const CardWithForm = () => {
   const ref = useRef < HTMLInputElement > null;
   const [formType, setFormType] = useState("login");
@@ -29,8 +28,12 @@ const CardWithForm = () => {
     }
   };
   return (
-    
-    <DialogRoot placement="center" initialFocusEl={() => ref.current}>
+    <DialogRoot
+      placement="center"
+      initialFocusEl={() => ref.current}
+      //size={["100%", "100%", "lg"]}
+      //className="dialog-root"
+    >
       <DialogTrigger asChild>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
@@ -40,9 +43,14 @@ const CardWithForm = () => {
           />
         </a>
       </DialogTrigger>
-      <DialogContent maxWidth="1100px" pt="16px" className='dialog-container' backdropFilter="blur(10px)">
-        <DialogBody>
-          <HStack spacing={8} align="stretch" h="auto">
+      <DialogContent
+        maxWidth="1100px"
+        pt="16px"
+        className="dialog-container"
+        backdropFilter="blur(10px)"
+      >
+        <DialogBody Width="800px">
+          <HStack spacing={8} align="stretch" wrap="wrap">
             {/* Left section with image */}
             <Box
               width="54%" // Fixed width for the image container
@@ -50,7 +58,8 @@ const CardWithForm = () => {
               borderRadius="12px"
               overflow="hidden"
               flexShrink={0} // Prevent shrinking of the container
-              marginRight='16px'
+              marginRight="16px"
+              display={["none", "none", "flex"]}
             >
               <Box
                 width="100%"
@@ -79,9 +88,6 @@ const CardWithForm = () => {
         </DialogBody>
       </DialogContent>
     </DialogRoot>
-
-
-
   );
 };
 
