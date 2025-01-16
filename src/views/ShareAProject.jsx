@@ -78,13 +78,17 @@ const ShareAProject = () => {
         <form onSubmit={handleSubmit}>
         <div className='share-project-container'>
             <div className='sp-info-container'>
+              <p className='sp-form-header-responsive'>Share Your Project</p>
                 <div className='sp-info-text-area'>
                     <p className='sp-info-header'>Start Your
                     Journey with Us</p>
+                    <div className='sp-info-text-responsive'>
                     <p className='sp-info-text'>Submit your project and take the next step in your learning journey with us. Whether you're looking to refine your skills or showcase your progress, we're here to guide you through each stage, helping you turn your ideas into impactful solutions.</p>
+                    </div>
                     <img className="thumbs-up" src="./images/thumbs-up.svg" alt='thumbs-up'></img>
                 </div>
             </div>
+            
             <div className='sp-form-container'>
                 <p className='sp-form-header'>Share Your Project</p>
                 <Field
@@ -93,10 +97,10 @@ const ShareAProject = () => {
                 errorText="This field is required">
                     <Input
                         marginTop="20px"
-                        width="617px"
+                        width="100%"
                         height="52px"
                         backgroundColor="rgba(255, 255, 255, 0.16)"
-                        placeholder="Enter your email"
+                        placeholder="Enter your Project"
                         borderRadius='8px'
                         value={newProject.title}
                         onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
@@ -108,7 +112,7 @@ const ShareAProject = () => {
                     <Textarea 
                         variant="subtle" 
                         marginTop="20px"
-                        width="617px"
+                        width="100%"
                         height="212px"
                         backgroundColor="rgba(255, 255, 255, 0.16)"
                         placeholder="Why did you develop this project?"
@@ -148,7 +152,7 @@ const ShareAProject = () => {
                 errorText="This field is required">
                     <Input
                         marginTop="20px"
-                        width="617px"
+                        width="100%"
                         height="52px"
                         backgroundColor="rgba(255, 255, 255, 0.16)"
                         placeholder="Enter your Github repository URL"
@@ -163,7 +167,7 @@ const ShareAProject = () => {
                 errorText="This field is required">
                     <Input
                         marginTop="20px"
-                        width="617px"
+                        width="100%"
                         height="52px"
                         backgroundColor="rgba(255, 255, 255, 0.16)"
                         placeholder="Enter your Live Demo URL (Optional)"
@@ -178,7 +182,7 @@ const ShareAProject = () => {
                     <Textarea 
                         variant="subtle" 
                         marginTop="20px"
-                        width="617px"
+                        width="100%"
                         height="212px"
                         backgroundColor="rgba(255, 255, 255, 0.16)"
                         placeholder="Do you have any comments? (Optional)"
