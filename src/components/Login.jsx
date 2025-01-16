@@ -38,18 +38,19 @@ const Login = ({ onFormSwitch }) => {
             Username
           </Text>
           <InputGroup flex="1" startElement={<LuUser />}>
-            <Input placeholder="Username" w="408px" />
+            <Input placeholder="Username" w="308px" />
           </InputGroup>
         </Field>
         <Text marginTop="10px" fontSize="18px" fontWeight="400">
           Password
         </Text>
 
-        <Field w="408px">
+        <Field w="308px">
           <PasswordInput
             label="Password"
             placeholder="Password"
             value={value}
+            w="308px"
             onChange={(e) => setValue(e.target.value)}
           />
         </Field>
@@ -61,10 +62,10 @@ const Login = ({ onFormSwitch }) => {
         >
           Forgot Password?
         </Link>
-
+        <br />
         <Button
           backgroundColor="#183961"
-          width="406px"
+          width="308px"
           h="50px"
           borderRadius="100px"
           marginBottom="20px"
