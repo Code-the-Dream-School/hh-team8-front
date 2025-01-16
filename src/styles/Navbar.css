@@ -7,8 +7,12 @@
     left: 0;
     width: 100%;
     backdrop-filter: blur(36px);
-    height: 144px;
-    z-index: 999;
+    -webkit-backdrop-filter: blur(36px); /* Safari */
+    height: 96px;
+    z-index: 3;
+}
+.hamburger-menu{
+    display: none;
 }
 .navbar-container{
     display: flex;
@@ -30,10 +34,34 @@
     font-size: 20px;
 }
 .logo{
-    width: 120px;
-    height: 120px;
+    width: 72px;
+    height: 72px;
 }
 .usericon{
     width: 56px;
     height: 56px;
+}
+@media (max-width: 768px){
+    .navbar-container{
+        padding: 0 40px;
+    }
+    .menu{
+        display: none;
+    }
+    .hamburger-menu{
+        display: flex;
+        align-items: center;
+    }
+    .burger-logo{
+        width: 30px;
+        height: 72px;
+    }
+    .menu-content {
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        border-radius: 4px;
+        padding: 8px;
+        z-index: 5;
+    }
 }

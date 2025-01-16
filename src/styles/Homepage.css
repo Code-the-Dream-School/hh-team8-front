@@ -1,10 +1,12 @@
-.section1-container{
-    margin-top: 256px;
+.sections-container{
+    margin-top: 160px;
+    padding: 0 40px;
+    max-width: 100%;
 }
 .section1{
     display: flex;
-    position: relative;
     z-index: 0;
+    position: relative;
 }
 .content-area{
     width: 50%;
@@ -12,9 +14,13 @@
 }
 .section-image{
     width: 50%;
+    height: 50%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
 }
 .build-title{
     font-weight: 600;
+    position: relative;
 }
 h1{
     font-size: 86px;
@@ -32,9 +38,10 @@ h1{
     line-height: 36px;
     margin: 0 0 42px 0;
 }
-.button-area{
-    display: flex;
+.top-text-2{
+    display: none;
 }
+
 .share-button{
     background-color: #CF64EE;
     color: white;
@@ -45,7 +52,7 @@ h1{
     border-width: 0;
     border-style: none;
     border-radius: 999px;
-    margin-right: 24px;
+    margin-right: 40px;
     cursor: pointer;
 }
 .explore-button{
@@ -65,32 +72,30 @@ h1{
 .home-data-rectangle{
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     background-color: rgba(86, 79, 142, 0.48);
     margin-top: 80px;
     width: 100%;
-    height: 97px;
     border: 2px solid #564F8E;
     border-radius: 15px;
     font-size: 20px;
     font-weight: 700;
-}
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 36px 24px;
+    }
 .section2{
     display: flex;
     margin-top: 88px;
+    flex-wrap: wrap;
 }
 .section-image2{
     width: 50%;
     height: auto;
 }
-.content-area-2{
-    width: 50%;
-    padding-left: 91px;
-    margin-top: -38px;
-}
+
 .section2-title{
-    margin-top: 50px;
     font-size: 35px;
     font-weight: 600;
 }
@@ -149,3 +154,158 @@ h1{
     margin-top: 64px;
     margin-bottom: 24px;
 }
+
+.paddingfix{
+    padding: 0;
+    padding-left: 52px;
+}
+
+@media (max-width: 1280px) {
+    h1{
+        font-size: 56px;
+    }
+    .share-button{
+        margin-bottom: 16px;
+    }
+  }
+  
+
+  @media (max-width: 960px) {
+
+
+    .content-area{
+        margin-top: 24px;
+        width: 100%;
+    }
+
+    .section-image{
+        width: 40%;
+        
+    }
+
+    h1{
+        font-size: 48px;
+    }
+  }
+  
+
+  @media (max-width: 768px) {
+    .section1{
+        flex-direction: column-reverse;
+        min-width: 350px;
+    }
+    .sections-container{
+        margin-top: 120px;
+        min-width: 420px;
+    }
+    .content-area-responsive{
+        display: flex;
+        justify-content: center;
+    }
+    .top-text{
+        display: none;
+    }
+    .top-text-2{
+        display: flex;
+        justify-content: center;
+        line-height: 20px;
+        font-size: 14px;
+        margin-bottom: 40px;    
+        text-align: center;
+    }
+    .cycle{
+        width: 90px;
+        top: -20px;
+        left: -30px;
+    }
+    .title-responsive{
+        margin-top: 10px;
+    }
+    .button-area{
+        margin-top: 40px;
+        padding-left: 25px;
+        flex-wrap: wrap;
+    }
+    .share-button{
+        width: 150px;
+        padding: 20px 0px;
+        font-size: 13px;
+        margin-right: 0px;
+    }
+    .explore-button{
+        width: 150px;
+        padding: 20px 0px;
+        font-size: 13px;
+    }
+    .home-data-rectangle{
+        margin-top: 0px;
+        font-size: 14px;
+        padding: 16px;
+    }
+    .content-area{
+        margin-top: 24px;
+        width: 100%;
+        padding-right: 0px;
+    }
+    .section2{
+        margin-top: 60px;
+    }
+    .section-image{
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 16px;
+    }
+    .build-title{
+        position: relative;
+    }
+    .img-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .section2-title{
+        margin-top: 30px ;
+        text-align: center;
+    }
+    .info-text{
+        text-align: center;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    h1{
+        font-size: 48px;
+    }
+    .paddingfix{
+        padding: 0;
+    }
+    .register-rectangle{
+        flex-direction: column-reverse;
+        height: auto;
+        margin-top: 40px;
+    }
+    .text-area-register{
+        padding: 15px 40px;
+        width: auto;
+    }
+    .email-area-register{
+        font-size: 16px;
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .register-title{
+        text-align: center;
+        font-size: 15px;
+    }
+    .register-info-text{
+        font-size: 12px;
+        text-align: center;
+    }
+    .register-button{
+        width: 150px;
+        height: auto;
+        padding: 15px 20px;
+        font-size: 13px;
+    }
+
+  }
+  
