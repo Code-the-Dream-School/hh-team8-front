@@ -138,7 +138,7 @@ const SignUp = ({ onFormSwitch }) => {
         journey!
       </Text>
       <Text fontSize="20px" marginTop="16px" fontWeight="600">
-        Already have an account?{" "}
+        Already have an account? &nbsp;
         <Text
           as="a"
           href="#"
@@ -156,7 +156,7 @@ const SignUp = ({ onFormSwitch }) => {
         <InputGroup flex="1" startElement={<LuUser />}>
           <Input
             placeholder="Username"
-            w="408px"
+            w="308px"
             name="username"
             value={userData.username}
             onChange={handleChange}
@@ -174,7 +174,7 @@ const SignUp = ({ onFormSwitch }) => {
         <InputGroup flex="1" startElement={<LuUser />}>
           <Input
             placeholder="Email"
-            w="408px"
+            w="308px"
             name="email"
             value={userData.email}
             onChange={handleChange}
@@ -183,7 +183,7 @@ const SignUp = ({ onFormSwitch }) => {
           />
         </InputGroup>
       </Field>
-      <Field w="408px" marginTop="10px" label="Password" required>
+      <Field w="308px" marginTop="10px" label="Password" required>
         <PasswordInput
           placeholder="Password"
           name="password_hash"
@@ -193,7 +193,7 @@ const SignUp = ({ onFormSwitch }) => {
           className={errors.password_hash ? "error" : ""}
         />
       </Field>
-      <Field w="408px" marginTop="10px" label="Confirm Password" required>
+      <Field w="308px" marginTop="10px" label="Confirm Password" required>
         <PasswordInput
           placeholder="Confirm Password"
           name="confirmPassword"
@@ -205,18 +205,19 @@ const SignUp = ({ onFormSwitch }) => {
       </Field>
       <br />
       {errorMessage && (
-        <Stack gap="2" width="408px">
+        <Stack gap="2" width="308px">
           <Alert status="error" title={errorMessage} />
         </Stack>
       )}
       {/* Display error message */}
+      <br />
       <Button
         backgroundColor="#CF64EE"
-        width="408px"
+        width="308px"
         h="50px"
         borderRadius="100px"
         marginBottom="25px"
-        marginTop="32px"
+        marginTop="12px"
         onClick={handleAddUserForm}
       >
         <Text

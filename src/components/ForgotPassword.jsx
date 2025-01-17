@@ -9,11 +9,11 @@ const ForgotPassword = ({ onFormSwitch }) => (
       required
       helperText="We'll send you instructions for renewing your password."
     >
-      <Input placeholder="Enter your email" w="406px" />
+      <Input placeholder="Enter your email" w="308pxpx" />
     </Field>
     <Button
       backgroundColor="orange.700"
-      width="406px"
+      width="308pxpx"
       h="50px"
       borderRadius="100px"
       marginBottom="25px"
