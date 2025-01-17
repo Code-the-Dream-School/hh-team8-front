@@ -1,6 +1,7 @@
 .share-project-container{
     margin-top: 204px;
     display: flex;
+    padding: 0 40px;
     
 }
 .sp-info-container{
@@ -54,4 +55,65 @@
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.9px;
+}
+.sp-form-header-responsive{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .share-project-container{
+        min-width: 380px;
+        flex-direction: column;
+        margin-top: 120px;
+    }
+    .sp-info-container{
+        width: auto;
+        height: auto;
+    }
+    .sp-info-text-area{
+        width: auto;
+        height: auto;
+        background-color: rgba(99, 233, 238, 0.24);
+        border-radius: 24px;
+        padding: 32px 32px 32px 32px;
+        position: relative;
+        text-align: center;
+    }
+    .sp-info-header{
+        margin-bottom: 8px;
+        z-index: 2;
+        position: relative;
+        font-size: 20px;
+    }
+    .thumbs-up {
+        z-index: 1; /* Place the image behind the text */
+        width: 200px; /* Adjust size for responsive layout */
+        opacity: 0.4;
+    }
+    .sp-info-text {
+        position: relative; /* Ensure text remains above the image */
+        z-index: 2;
+        font-size: 10px;
+        line-height: 20px;
+    }
+    .sp-form-header{
+        display: none;
+    }
+    .sp-form-container{
+        width: auto;
+    }
+    .sp-form-header-responsive{
+        display: flex;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .sp-button{
+        width: 150px;
+        font-size: 13px;
+        padding: 25px 20px;
+    }
 }
