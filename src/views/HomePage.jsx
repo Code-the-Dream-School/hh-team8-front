@@ -9,15 +9,19 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="section1-container">
+    <div className="sections-container">
         <div className = 'section1'>
-            <img className="cycle" src="./images/cycle.png"></img>
+            
             <div className="content-area">
+              <div className="content-area-responsive">
+                <div className="title-responsive">
                 <div className="build-title">
+                <img className="cycle" src="./images/cycle.png"></img>
                 <h1>Build.<br /> Share.<br /> Review.<br /> Repeat.</h1>
                 </div>
                 <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
-                <div className="buton-area">
+                </div>
+                <div className="button-area">
                     <button
                     className = "share-button"
                     onClick={() => navigate('/share-project')}>
@@ -25,18 +29,20 @@ const HomePage = () => {
                     <button className = "explore-button"
                     onClick={() => navigate('/explore-project')}>
                     EXPLORE PROJECTS</button>
-                </div>            
+                </div>
+              </div>            
             </div>
             <img className="section-image" src="./images/sectionimg-1.png"></img>
-      </div>
+        </div>
+        <p className="top-text-2">Showcase your work and connect with peers who can help you reach the next level.</p>
       <div className="home-data-rectangle">
         <p>PROJECTS SHARED: 1,024+</p>
         <p>REVIEWS GIVEN: 5,678+ </p>
         <p>ACTIVE STUDENTS: 856+ </p>
       </div>
       <div className="section2">
-        <img className="section-image2" src="./images/sectionimg-2.png"></img>
-        <div className="content-area-2">
+        <img className="section-image" src="./images/sectionimg-2.png"></img>
+        <div className="content-area paddingfix">
           <p className="section2-title">Welcome to CTD Project Review</p>
           <div className="info-text">
             <p>
@@ -57,7 +63,7 @@ const HomePage = () => {
       <div className="register-rectangle">
         <div className="text-area-register">
           <p className="register-title">Stay Updated on the Latest Projects!</p>
-          <p>
+          <p className="register-info-text">
             Don’t miss out on exciting new ideas and creative works from our
             vibrant
             <br />

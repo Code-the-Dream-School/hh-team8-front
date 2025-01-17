@@ -43,13 +43,18 @@ const CardWithForm = () => {
           />
         </a>
       </DialogTrigger>
+      <DialogTrigger asChild>
+        <button style={{ display: "none" }} id="menu-signin-trigger">
+          Open Sign In
+        </button>
+      </DialogTrigger>
       <DialogContent
         maxWidth="1100px"
         pt="16px"
         className="dialog-container"
         backdropFilter="blur(10px)"
       >
-        <DialogBody Width="800px">
+        <DialogBody Width="auto">
           <HStack spacing={8} align="stretch" wrap="wrap">
             {/* Left section with image */}
             <Box
