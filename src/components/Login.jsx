@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, VStack, Box, Link, Button, Text } from "@chakra-ui/react";
+import { Input, VStack, Link, Button, Text, Group } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
@@ -84,7 +84,6 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
   };
   return (
     <VStack spacing={4} align="start" w="100%">
-      <Box>
         <Text fontSize="36px" fontWeight="700" marginTop="16px">
           Sign In
         </Text>
@@ -107,24 +106,23 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
             Sign up→
           </Text>
         </Text>
-
         <Field marginTop="32px">
           <Text fontSize="18px" fontWeight="400">
             Username
           </Text>
-          <InputGroup flex="1" startElement={<LuUser />}>
-            <Input
-              name="username"
-              value={userData.username}
-              onChange={handleChange}
-              placeholder="Username"
-              w="308px"
-            />
-          </InputGroup>
+        <Group mx="auto">
+          <VStack>
+        <Field marginTop="20px" label="Username" required>
+                <InputGroup flex="1" startElement={<LuUser />}>
+                  <Input
+                    placeholder="Username"
+                    value={userData.username}
+                    onChange={handleChange}
+                    w="308px"
+                    name="username"
+                  />
+                </InputGroup>
         </Field>
-        <Text marginTop="10px" fontSize="18px" fontWeight="400">
-          Password
-        </Text>
 
         <Field w="308px">
           <PasswordInput
@@ -166,6 +164,8 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
         </Button>
       </Box>
       <Toaster />
+        </VStack>
+        </Group>
     </VStack>
   );
 };

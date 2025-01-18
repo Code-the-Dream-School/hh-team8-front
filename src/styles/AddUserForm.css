@@ -2,3 +2,8 @@
 input.error {
   border: 2px solid red;
 }
+@media (max-width: 768px) {
+.sign-up-text{
+  font-size: 18px !important;
+}
+}

@@ -6,3 +6,9 @@
 .register-component{
     backdrop-filter: blur(10px);
 }
+
+@media (max-width: 768px) {
+    .dialog-container{
+        margin-inline: 20px;
+    }
+}
