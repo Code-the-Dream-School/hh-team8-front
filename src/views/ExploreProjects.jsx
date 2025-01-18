@@ -4,12 +4,22 @@ import {
   Badge, 
   Button, 
   IconButton, 
-  Stack } from "@chakra-ui/react"
+  Stack } from "@chakra-ui/react";
+import Comments from "../components/Comments";
 
 
 const ExploreProjects = () => {
   
     const [projects, setProjects] = useState([]);
+
+    const openCommentsModal = () => {
+      const triggerButton = document.getElementById("comments-trigger");
+      if (triggerButton) {
+        triggerButton.click(); // Programmatically click the button
+      } else {
+        console.error("Trigger button not found");
+      }
+    };
 
     useEffect(() => {
     // Fetch data from JSON Server
@@ -49,7 +59,7 @@ const ExploreProjects = () => {
                       <IconButton className='dislike-button' variant="unstyled">
                         <img className="dislike-img" src="./images/dislike.svg" alt='dislike'></img>
                       </IconButton>
-                      <IconButton className='comment-button' variant="unstyled">
+                      <IconButton className='comment-button' variant="unstyled" onClick={openCommentsModal}>
                         <img className="comments-img" src="./images/comments.svg" alt='comments'></img>
                       </IconButton>
                     </Stack>
@@ -110,6 +120,7 @@ const ExploreProjects = () => {
             </div>
             ))}
         </div>
+        <Comments />
     </div>
   );
 };

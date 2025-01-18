@@ -35,7 +35,7 @@ const CardWithForm = () => {
       //size={["100%", "100%", "lg"]}
       //className="dialog-root"
     >
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
             className="usericon"
@@ -44,7 +44,7 @@ const CardWithForm = () => {
           />
         </a>
       </DialogTrigger>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <button style={{ display: "none" }} id="menu-signin-trigger">
           Open Sign In
         </button>
