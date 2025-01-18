@@ -1,12 +1,11 @@
 import React from "react";
-import { Input, VStack, Box, Link, Button, Text, Group } from "@chakra-ui/react";
+import { Input, VStack, Link, Button, Text, Group } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
 import { LuUser } from "react-icons/lu";
 import { useState } from "react";
 const Login = ({ onFormSwitch }) => {
-  const [value, setValue] = useState("");
   return (
     <VStack spacing={4} align="start" w="100%">
         <Text fontSize="36px" fontWeight="700" marginTop="16px">
