@@ -5,10 +5,12 @@ import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
 import { LuUser } from "react-icons/lu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../components/ui/toaster";
-const Login = ({ onFormSwitch }) => {
-  const [value, setValue] = useState("");
+const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
+  const navigate = useNavigate();
   const url = "http://localhost:8001/api/v1/login";
+  const triggerButton = document.getElementById("menu-auth-trigger");
   const [userData, setUserData] = useState({
     username: "",
     password_hash: "",
@@ -21,7 +23,7 @@ const Login = ({ onFormSwitch }) => {
     }));
   };
 
-  const handleAuthentification = async (e) => {
+  const handleOnClickLoginBT = async (e) => {
     e.preventDefault();
     try {
       console.log(userData);
@@ -38,25 +40,33 @@ const Login = ({ onFormSwitch }) => {
 
       if (response.ok) {
         const data = await response.json();
-        //alert(data.message);
-        toaster.create({
-          title: data.message,
-          type: "success",
-          duration: 4000,
-          action: {
-            label: "x",
-          },
-        });
-        //setAlertMessage(data.message);
+        localStorage.setItem("auth", JSON.stringify(data.token));
+        //triggerButton.click(); // Programmatically "click" the hidden DialogTrigger
+        isAuthentificated();
+        console.log(data.token);
         console.log("Server Response:", data);
         setUserData({
           username: "",
           password_hash: "",
         });
-      } else {
-        console.error("Failed to add user");
+
+        if (onLoginSuccess) {
+          onLoginSuccess(); // Notify the parent to close the dialog
+        }
+        navigate("/"); // Redirect to share-project after successful login
         toaster.create({
-          title: "Failed to add user",
+          title: "Login successful!",
+          type: "success",
+          duration: 8000,
+          action: {
+            label: "x",
+          },
+        });
+      } else {
+        console.error("Failed to login, please review your credentials");
+        toaster.create({
+          title: "Login unsuccessful",
+          description: "Please verify your credentials and try again.",
           type: "error",
           action: {
             label: "x",
@@ -141,10 +151,11 @@ const Login = ({ onFormSwitch }) => {
           backgroundColor="#183961"
           width="308px"
           h="50px"
+          id={"btlogin"}
           borderRadius="100px"
           marginBottom="20px"
           marginTop="32px"
-          onClick={handleAuthentification}
+          onClick={handleOnClickLoginBT}
         >
           <Text
             fontWeight="800"
@@ -156,6 +167,7 @@ const Login = ({ onFormSwitch }) => {
           </Text>
         </Button>
       </Box>
+      <Toaster />
     </VStack>
   );
 };

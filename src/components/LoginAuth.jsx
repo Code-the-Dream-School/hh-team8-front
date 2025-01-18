@@ -1,10 +1,13 @@
-import { Box, HStack, VStack, Image } from "@chakra-ui/react";
+import { Box, HStack, VStack, Image, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import {
   DialogBody,
   DialogContent,
   DialogRoot,
+  DialogFooter,
   DialogTrigger,
+  DialogCloseTrigger,
+  DialogActionTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
 import Login from "./Login";
@@ -12,13 +15,27 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import "../styles/login.css";
 
-const CardWithForm = () => {
+const CardWithForm = ({ isAuthentificated }) => {
   const ref = useRef < HTMLInputElement > null;
   const [formType, setFormType] = useState("login");
+  const closeDialogRef = useRef(null); // Ref to programmatically trigger DialogCloseTrigger
+
+  const handleClose = () => {
+    if (closeDialogRef.current) {
+      closeDialogRef.current.click(); // Programmatically trigger close button
+    }
+  };
+
   const renderFormContent = () => {
     switch (formType) {
       case "login":
-        return <Login onFormSwitch={setFormType} />;
+        return (
+          <Login
+            onFormSwitch={setFormType}
+            onLoginSuccess={handleClose}
+            isAuthentificated={isAuthentificated}
+          />
+        );
       case "signup":
         return <SignUp onFormSwitch={setFormType} />;
       case "forgotPassword":
@@ -28,12 +45,7 @@ const CardWithForm = () => {
     }
   };
   return (
-    <DialogRoot
-      placement="center"
-      initialFocusEl={() => ref.current}
-      //size={["100%", "100%", "lg"]}
-      //className="dialog-root"
-    >
+    <DialogRoot placement="center" id={"authDialog"}>
       <DialogTrigger asChild>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
@@ -91,6 +103,17 @@ const CardWithForm = () => {
             </VStack>
           </HStack>
         </DialogBody>
+        <DialogFooter>
+          <DialogActionTrigger>
+            <Button
+              as="div"
+              ref={closeDialogRef}
+              variant="outline"
+              display={"none"}
+            />
+          </DialogActionTrigger>
+          <DialogCloseTrigger />
+        </DialogFooter>
       </DialogContent>
     </DialogRoot>
   );
