@@ -1,4 +1,4 @@
-import { Input, VStack, Stack, Button, Text } from "@chakra-ui/react";
+import { Input, VStack, Stack, Button, Text, Group } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
@@ -137,7 +137,7 @@ const SignUp = ({ onFormSwitch }) => {
         Welcome to Code the Dream Project Review! Register to start your
         journey!
       </Text>
-      <Text fontSize="20px" marginTop="16px" fontWeight="600">
+      <Text fontSize="20px" marginTop="16px" fontWeight="600" className="sign-up-text">
         Already have an account? &nbsp;
         <Text
           as="a"
@@ -152,6 +152,8 @@ const SignUp = ({ onFormSwitch }) => {
           Sign In→
         </Text>
       </Text>
+      <Group mx="auto">
+        <VStack>
       <Field marginTop="20px" label="Username" required>
         <InputGroup flex="1" startElement={<LuUser />}>
           <Input
@@ -217,7 +219,6 @@ const SignUp = ({ onFormSwitch }) => {
         h="50px"
         borderRadius="100px"
         marginBottom="25px"
-        marginTop="12px"
         onClick={handleAddUserForm}
       >
         <Text
@@ -229,6 +230,8 @@ const SignUp = ({ onFormSwitch }) => {
           REGISTER
         </Text>
       </Button>
+      </VStack>
+      </Group>
       <Toaster />
     </VStack>
   );

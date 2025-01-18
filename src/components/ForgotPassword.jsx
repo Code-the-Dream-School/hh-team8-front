@@ -1,8 +1,10 @@
 import React from "react";
-import { Input, Button, HStack, Link, Text } from "@chakra-ui/react";
+import { Input, Button, HStack, Link, Text, Group, VStack } from "@chakra-ui/react";
 import { Field } from "./ui/field";
 const ForgotPassword = ({ onFormSwitch }) => (
   <>
+  <Group mx='auto'>
+    <VStack>
     <Field
       marginTop="32px"
       label="Email"
@@ -13,11 +15,10 @@ const ForgotPassword = ({ onFormSwitch }) => (
     </Field>
     <Button
       backgroundColor="orange.700"
-      width="308pxpx"
       h="50px"
       borderRadius="100px"
-      marginBottom="25px"
       marginTop="32px"
+      width="308px"
     >
       <Text
         fontWeight="800"
@@ -28,6 +29,8 @@ const ForgotPassword = ({ onFormSwitch }) => (
         SEND EMAIL
       </Text>
     </Button>
+    </VStack>
+    </Group>
     <HStack justifyContent="center" mt="4">
       <Link
         color="teal.500"

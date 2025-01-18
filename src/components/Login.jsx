@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, VStack, Box, Link, Button, Text } from "@chakra-ui/react";
+import { Input, VStack, Box, Link, Button, Text, Group } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
@@ -9,7 +9,6 @@ const Login = ({ onFormSwitch }) => {
   const [value, setValue] = useState("");
   return (
     <VStack spacing={4} align="start" w="100%">
-      <Box>
         <Text fontSize="36px" fontWeight="700" marginTop="16px">
           Sign In
         </Text>
@@ -32,28 +31,24 @@ const Login = ({ onFormSwitch }) => {
             Sign up→
           </Text>
         </Text>
-
-        <Field marginTop="32px">
-          <Text fontSize="18px" fontWeight="400">
-            Username
-          </Text>
-          <InputGroup flex="1" startElement={<LuUser />}>
-            <Input placeholder="Username" w="308px" />
-          </InputGroup>
+        <Group mx="auto">
+          <VStack>
+        <Field marginTop="20px" label="Username" required>
+                <InputGroup flex="1" startElement={<LuUser />}>
+                  <Input
+                    placeholder="Username"
+                    w="308px"
+                    name="username"
+                  />
+                </InputGroup>
         </Field>
-        <Text marginTop="10px" fontSize="18px" fontWeight="400">
-          Password
-        </Text>
 
-        <Field w="308px">
-          <PasswordInput
-            label="Password"
-            placeholder="Password"
-            value={value}
-            w="308px"
-            onChange={(e) => setValue(e.target.value)}
-          />
-        </Field>
+        <Field w="308px" marginTop="10px" label="Password" required>
+                <PasswordInput
+                  placeholder="Password"
+                  name="password_hash"
+                />
+              </Field>
         <Link
           color="teal.500"
           onClick={() => onFormSwitch("forgotPassword")}
@@ -69,7 +64,6 @@ const Login = ({ onFormSwitch }) => {
           h="50px"
           borderRadius="100px"
           marginBottom="20px"
-          marginTop="32px"
         >
           <Text
             fontWeight="800"
@@ -80,7 +74,8 @@ const Login = ({ onFormSwitch }) => {
             SIGN IN
           </Text>
         </Button>
-      </Box>
+        </VStack>
+        </Group>
     </VStack>
   );
 };

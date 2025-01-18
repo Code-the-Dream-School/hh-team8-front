@@ -4,6 +4,7 @@ import {
   DialogBody,
   DialogContent,
   DialogRoot,
+  DialogCloseTrigger,
   DialogTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
@@ -48,6 +49,7 @@ const CardWithForm = () => {
           Open Sign In
         </button>
       </DialogTrigger>
+      
       <DialogContent
         maxWidth="1100px"
         pt="16px"
@@ -55,6 +57,7 @@ const CardWithForm = () => {
         backdropFilter="blur(10px)"
       >
         <DialogBody Width="auto">
+          <DialogCloseTrigger size='md' bg='wheat' m='2'/>
           <HStack spacing={8} align="stretch" wrap="wrap">
             {/* Left section with image */}
             <Box
@@ -84,7 +87,6 @@ const CardWithForm = () => {
                 />
               </Box>
             </Box>
-
             {/* Right section with form */}
             <VStack spacing={4} align="start" flex="1">
               {renderFormContent()}
