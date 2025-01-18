@@ -7,7 +7,6 @@ import {
   DialogFooter,
   DialogCloseTrigger,
   DialogTrigger,
-  DialogCloseTrigger,
   DialogActionTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
@@ -60,7 +59,6 @@ const CardWithForm = ({ isAuthentificated }) => {
           Open Sign In
         </button>
       </DialogTrigger>
-      
       <DialogContent
         maxWidth="1100px"
         pt="16px"
@@ -68,7 +66,6 @@ const CardWithForm = ({ isAuthentificated }) => {
         backdropFilter="blur(10px)"
       >
         <DialogBody Width="auto">
-          <DialogCloseTrigger size='md' bg='wheat' m='2'/>
           <HStack spacing={8} align="stretch" wrap="wrap">
             {/* Left section with image */}
             <Box
@@ -112,8 +109,8 @@ const CardWithForm = ({ isAuthentificated }) => {
               variant="outline"
               display={"none"}
             />
+            <DialogCloseTrigger size="md" bg="wheat" m="2" />
           </DialogActionTrigger>
-          <DialogCloseTrigger />
         </DialogFooter>
       </DialogContent>
     </DialogRoot>
