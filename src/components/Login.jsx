@@ -10,7 +10,6 @@ import { Toaster, toaster } from "../components/ui/toaster";
 const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
   const navigate = useNavigate();
   const url = "http://localhost:8001/api/v1/login";
-  const triggerButton = document.getElementById("menu-auth-trigger");
   const [userData, setUserData] = useState({
     username: "",
     password_hash: "",
@@ -41,7 +40,6 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("auth", JSON.stringify(data.token));
-        //triggerButton.click(); // Programmatically "click" the hidden DialogTrigger
         isAuthentificated();
         console.log(data.token);
         console.log("Server Response:", data);

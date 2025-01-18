@@ -16,7 +16,6 @@ import ForgotPassword from "./ForgotPassword";
 import "../styles/login.css";
 
 const CardWithForm = ({ isAuthentificated }) => {
-  const ref = useRef < HTMLInputElement > null;
   const [formType, setFormType] = useState("login");
   const closeDialogRef = useRef(null); // Ref to programmatically trigger DialogCloseTrigger
 
