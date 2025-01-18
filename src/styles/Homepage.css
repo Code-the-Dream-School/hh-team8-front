@@ -88,7 +88,6 @@ h1{
 .section2{
     display: flex;
     margin-top: 88px;
-    flex-wrap: wrap;
 }
 .section-image2{
     width: 50%;
@@ -248,6 +247,7 @@ h1{
     }
     .section2{
         margin-top: 60px;
+        flex-wrap: wrap;
     }
     .section-image{
         width: 100%;
