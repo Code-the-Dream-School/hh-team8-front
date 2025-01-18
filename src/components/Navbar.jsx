@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 import LoginAuth from "./LoginAuth";
+import { useNavigate } from "react-router-dom";
 import {
   MenuContent,
   MenuItem,
@@ -11,11 +12,13 @@ import {
 
 const Navbar = () => {
   const storedAuth = JSON.parse(localStorage.getItem("auth"));
+  const navigate = useNavigate();
   const [isSignedIn, setIsSignedIn] = useState(() => {
     return JSON.parse(localStorage.getItem("auth")) || false;
   });
   const handleLogout = () => {
     localStorage.removeItem("auth"); // Clear auth data the logout api will be call here
+    navigate("/"); // Redirect to Home
   };
   const isAuthentificated = () => {
     setIsSignedIn(true); //update the data to true if the authentification is successfully in the login component.
