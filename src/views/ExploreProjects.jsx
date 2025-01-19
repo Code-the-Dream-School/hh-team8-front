@@ -5,6 +5,13 @@ import {
   Button, 
   IconButton, 
   Stack } from "@chakra-ui/react";
+  import {
+    MenuContent,
+    MenuItem,
+    MenuRoot,
+    MenuSeparator,
+    MenuTrigger,
+  } from "../components/ui/menu";
 import Comments from "../components/Comments";
 
 
@@ -51,7 +58,20 @@ const ExploreProjects = () => {
                     <div className='like-comment-details'>
                     <Stack>
                       <IconButton className='details-button' variant="unstyled">
-                        <img className="details-img" src="./images/details.svg" alt='details'></img>
+                        <MenuRoot>
+                            <MenuTrigger asChild>
+                            <img className="details-img" src="./images/details.svg" alt='details'></img>
+                            </MenuTrigger>
+                            <MenuContent className="menu-content">
+                                <MenuItem>
+                                  Remove
+                                </MenuItem>
+                                <MenuSeparator />
+                                <MenuItem value="new-txt2" as="a">
+                                  Report ⚠️
+                                </MenuItem>
+                            </MenuContent>
+                          </MenuRoot>
                       </IconButton>
                       <IconButton className='like-button' variant="unstyled">
                         <img className="like-img" src="./images/like.svg" alt='like'></img>
