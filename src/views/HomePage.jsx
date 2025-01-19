@@ -4,37 +4,71 @@ import { Field } from "../components/ui/field";
 import { Button } from "../components/ui/button";
 import "../styles/Homepage.css";
 import { useNavigate } from "react-router-dom";
-
+import { Toaster, toaster } from "../components/ui/toaster";
 const HomePage = () => {
+  const storedAuth = JSON.parse(localStorage.getItem("auth"));
   const navigate = useNavigate();
+
+  const handleAuthentificationCheck = () => {
+    console.log("token: ", storedAuth);
+    if (!storedAuth) {
+      toaster.create({
+        title: "Sign In Required!",
+        description: "You must be signed in to proceed with this request.",
+        type: "warning",
+        duration: 4000,
+        action: {
+          label: "x",
+        },
+      });
+      return;
+    } else {
+      navigate("/share-project");
+    }
+  };
 
   return (
     <div className="sections-container">
-        <div className = 'section1'>
-            
-            <div className="content-area">
-              <div className="content-area-responsive">
-                <div className="title-responsive">
-                <div className="build-title">
+      <div className="section1">
+        <div className="content-area">
+          <div className="content-area-responsive">
+            <div className="title-responsive">
+              <div className="build-title">
                 <img className="cycle" src="./images/cycle.png"></img>
-                <h1>Build.<br /> Share.<br /> Review.<br /> Repeat.</h1>
-                </div>
-                <p className="top-text">Showcase your work and connect with peers who can help you reach the next level.</p>
-                </div>
-                <div className="button-area">
-                    <button
-                    className = "share-button"
-                    onClick={() => navigate('/share-project')}>
-                    SHARE A PROJECT</button>
-                    <button className = "explore-button"
-                    onClick={() => navigate('/explore-project')}>
-                    EXPLORE PROJECTS</button>
-                </div>
-              </div>            
+                <h1>
+                  Build.
+                  <br /> Share.
+                  <br /> Review.
+                  <br /> Repeat.
+                </h1>
+              </div>
+              <p className="top-text">
+                Showcase your work and connect with peers who can help you reach
+                the next level.
+              </p>
             </div>
-            <img className="section-image" src="./images/sectionimg-1.png"></img>
+            <div className="button-area">
+              <button
+                className="share-button"
+                onClick={() => handleAuthentificationCheck()}
+              >
+                SHARE A PROJECT
+              </button>
+              <button
+                className="explore-button"
+                onClick={() => navigate("/explore-project")}
+              >
+                EXPLORE PROJECTS
+              </button>
+            </div>
+          </div>
         </div>
-        <p className="top-text-2">Showcase your work and connect with peers who can help you reach the next level.</p>
+        <img className="section-image" src="./images/sectionimg-1.png"></img>
+      </div>
+      <p className="top-text-2">
+        Showcase your work and connect with peers who can help you reach the
+        next level.
+      </p>
       <div className="home-data-rectangle">
         <p>PROJECTS SHARED: 1,024+</p>
         <p>REVIEWS GIVEN: 5,678+ </p>
@@ -80,6 +114,7 @@ const HomePage = () => {
           <Button className="register-button" size="md">
             Register NOW!
           </Button>
+          <Toaster />
         </div>
       </div>
       <img className="ctd-logo" src="./images/ctd-logo.png"></img>

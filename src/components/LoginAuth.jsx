@@ -24,10 +24,6 @@ const CardWithForm = ({ isAuthentificated }) => {
 
   const storedAuth = JSON.parse(localStorage.getItem("auth"));
   const navigate = useNavigate();
-  /*const [isSignedIn, setIsSignedIn] = useState(() => {
-    return JSON.parse(localStorage.getItem("auth")) || false;
-  });*/
-
   const handleLogout = () => {
     localStorage.removeItem("auth"); // Clear auth data the logout api will be call here
     navigate("/"); // Redirect to Home
