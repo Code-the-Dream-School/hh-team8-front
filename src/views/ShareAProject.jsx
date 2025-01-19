@@ -12,23 +12,28 @@ import { Checkbox } from "../components/ui/checkbox";
 import { Toaster, toaster } from "../components/ui/toaster";
 
 const ShareAProject = () => {
+  const token = JSON.parse(localStorage.getItem("auth"));
   const [newProject, setNewProject] = useState({
-    title: "",
-    githubURL: "",
+    name: "",
     description: "",
-    frameworks: [],
+    githubURL: "",
     liveDemoURL: "",
     comments: "",
     date: "",
+    created_by: 63,
+    frameworks: [],
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newProject);
+
     try {
-      const response = await fetch("http://localhost:8001/addproject", {
+      const response = await fetch("http://localhost:8001/api/v1/addProject", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           ...newProject,
@@ -46,13 +51,13 @@ const ShareAProject = () => {
           },
         });
         setNewProject({
-          title: "",
-          githubURL: "",
+          name: "",
           description: "",
-          frameworks: [],
+          githubURL: "",
           liveDemoURL: "",
           comments: "",
           date: "",
+          frameworks: [],
         });
       } else {
         console.error("Failed to submit project");
@@ -116,9 +121,9 @@ const ShareAProject = () => {
               backgroundColor="rgba(255, 255, 255, 0.16)"
               placeholder="Enter your Project"
               borderRadius="8px"
-              value={newProject.title}
+              value={newProject.name}
               onChange={(e) =>
-                setNewProject({ ...newProject, title: e.target.value })
+                setNewProject({ ...newProject, name: e.target.value })
               }
             />
           </Field>
