@@ -16,36 +16,28 @@ const ShareAProject = () => {
   const [newProject, setNewProject] = useState({
     name: "",
     description: "",
-    githubURL: "",
-    liveDemoURL: "",
-    comments: "",
-    date: "",
-    created_by: 63,
-    frameworks: [],
+    github_link: "",
+    youtube_video_link: "",
+    tags: [],
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newProject);
 
     try {
       const response = await fetch("http://localhost:8001/api/v1/addProject", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
-        body: JSON.stringify({
-          ...newProject,
-          date: new Date().toISOString(),
-        }),
+        body: JSON.stringify(newProject),
       });
-      console.log(newProject);
       if (response.ok) {
         toaster.create({
           title: "Project submitted succesfully!",
           type: "success",
-          duration: 4000,
+          duration: 8000,
           action: {
             label: "x",
           },
@@ -53,14 +45,13 @@ const ShareAProject = () => {
         setNewProject({
           name: "",
           description: "",
-          githubURL: "",
-          liveDemoURL: "",
-          comments: "",
-          date: "",
-          frameworks: [],
+          github_link: "",
+          youtube_video_link: "",
+          tags: [],
         });
       } else {
-        console.error("Failed to submit project");
+        console.error("Failed to add project:", response.statusText);
+        //console.error("Failed to submit project");
       }
     } catch (error) {
       toaster.create({
@@ -77,9 +68,9 @@ const ShareAProject = () => {
   const handleCheckboxChange = (value) => {
     setNewProject((prev) => ({
       ...prev,
-      frameworks: prev.frameworks.includes(value)
-        ? prev.frameworks.filter((framework) => framework !== value)
-        : [...prev.frameworks, value],
+      tags: prev.tags.includes(value)
+        ? prev.tags.filter((tags) => tags !== value)
+        : [...prev.tags, value],
     }));
   };
 
@@ -150,8 +141,8 @@ const ShareAProject = () => {
           </Field>
           <Fieldset.Root>
             <CheckboxGroup
-              key={newProject.frameworks.length}
-              defaultValue={newProject.frameworks}
+              key={newProject.tags.length}
+              defaultValue={newProject.tags}
               name="framework"
             >
               <Fieldset.Legend
@@ -168,7 +159,7 @@ const ShareAProject = () => {
                   value="React"
                   colorPalette="cyan"
                   variant="solid"
-                  checked={newProject.frameworks.includes("React")}
+                  checked={newProject.tags.includes("React")}
                   onChange={() => handleCheckboxChange("React")}
                 >
                   <span
@@ -185,7 +176,7 @@ const ShareAProject = () => {
                   value="Node.js"
                   colorPalette="green"
                   variant="solid"
-                  checked={newProject.frameworks.includes("Node.js")}
+                  checked={newProject.tags.includes("Node.js")}
                   onChange={() => handleCheckboxChange("Node.js")}
                 >
                   <span
@@ -202,7 +193,7 @@ const ShareAProject = () => {
                   value="HTML / CSS"
                   colorPalette="purple"
                   variant="solid"
-                  checked={newProject.frameworks.includes("HTML / CSS")}
+                  checked={newProject.tags.includes("HTML / CSS")}
                   onChange={() => handleCheckboxChange("HTML / CSS")}
                 >
                   <span
@@ -233,9 +224,9 @@ const ShareAProject = () => {
               backgroundColor="rgba(255, 255, 255, 0.16)"
               placeholder="Enter your Github repository URL"
               borderRadius="8px"
-              value={newProject.githubURL}
+              value={newProject.github_link}
               onChange={(e) =>
-                setNewProject({ ...newProject, githubURL: e.target.value })
+                setNewProject({ ...newProject, github_link: e.target.value })
               }
             />
           </Field>
@@ -253,9 +244,12 @@ const ShareAProject = () => {
               backgroundColor="rgba(255, 255, 255, 0.16)"
               placeholder="Enter your Live Demo URL (Optional)"
               borderRadius="8px"
-              value={newProject.liveDemoURL}
+              value={newProject.youtube_video_link}
               onChange={(e) =>
-                setNewProject({ ...newProject, liveDemoURL: e.target.value })
+                setNewProject({
+                  ...newProject,
+                  youtube_video_link: e.target.value,
+                })
               }
             />
           </Field>
@@ -274,10 +268,10 @@ const ShareAProject = () => {
               placeholder="Do you have any comments? (Optional)"
               borderRadius="8px"
               border="2px solid white"
-              value={newProject.comments}
+              /*value={newProject.comments}
               onChange={(e) =>
                 setNewProject({ ...newProject, comments: e.target.value })
-              }
+              }*/
             />
             <Button className="sp-button" variant="solid" type="submit">
               SUBMIT PROJECT

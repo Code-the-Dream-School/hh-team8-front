@@ -10,7 +10,6 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleAuthentificationCheck = () => {
-    console.log("token: ", storedAuth);
     if (!storedAuth) {
       toaster.create({
         title: "Sign In Required!",
