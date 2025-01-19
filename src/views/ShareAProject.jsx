@@ -24,7 +24,6 @@ const ShareAProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch("http://localhost:8001/addproject", {
         method: "POST",
