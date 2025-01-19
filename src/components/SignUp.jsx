@@ -11,7 +11,6 @@ import "../styles/AddUserForm.css"; // Import custom CSS
 const SignUp = ({ onFormSwitch }) => {
   const url = "http://localhost:8001/api/v1/adduser";
   const [errorMessage, setErrorMessage] = useState("");
-  //const [alertMessage, setAlertMessage] = useState("");
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -137,7 +136,12 @@ const SignUp = ({ onFormSwitch }) => {
         Welcome to Code the Dream Project Review! Register to start your
         journey!
       </Text>
-      <Text fontSize="20px" marginTop="16px" fontWeight="600" className="sign-up-text">
+      <Text
+        fontSize="20px"
+        marginTop="16px"
+        fontWeight="600"
+        className="sign-up-text"
+      >
         Already have an account? &nbsp;
         <Text
           as="a"
@@ -147,90 +151,90 @@ const SignUp = ({ onFormSwitch }) => {
           fontWeight="600"
           cursor="pointer"
           display="inline" // Ensures it stays inline with the "New user?" text
-          onClick={() => onFormSwitch("login")} // Switch to Sign Up form
+          onClick={() => onFormSwitch("login")} // Switch to Sign in form
         >
           Sign In→
         </Text>
       </Text>
       <Group mx="auto">
         <VStack>
-      <Field marginTop="20px" label="Username" required>
-        <InputGroup flex="1" startElement={<LuUser />}>
-          <Input
-            placeholder="Username"
-            w="308px"
-            name="username"
-            value={userData.username}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.username ? "error" : ""}
-          />
-        </InputGroup>
-      </Field>
-      <Field
-        marginTop="10px"
-        label="Email"
-        required
-        helperText="We'll never share your email."
-      >
-        <InputGroup flex="1" startElement={<LuUser />}>
-          <Input
-            placeholder="Email"
-            w="308px"
-            name="email"
-            value={userData.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.email ? "error" : ""}
-          />
-        </InputGroup>
-      </Field>
-      <Field w="308px" marginTop="10px" label="Password" required>
-        <PasswordInput
-          placeholder="Password"
-          name="password_hash"
-          value={userData.password_hash}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.password_hash ? "error" : ""}
-        />
-      </Field>
-      <Field w="308px" marginTop="10px" label="Confirm Password" required>
-        <PasswordInput
-          placeholder="Confirm Password"
-          name="confirmPassword"
-          value={userData.confirmPassword}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.confirmPassword ? "error" : ""}
-        />
-      </Field>
-      <br />
-      {errorMessage && (
-        <Stack gap="2" width="308px">
-          <Alert status="error" title={errorMessage} />
-        </Stack>
-      )}
-      {/* Display error message */}
-      <br />
-      <Button
-        backgroundColor="#CF64EE"
-        width="308px"
-        h="50px"
-        borderRadius="100px"
-        marginBottom="25px"
-        onClick={handleAddUserForm}
-      >
-        <Text
-          fontWeight="800"
-          fontSize="16px"
-          letterSpacing="0.9px"
-          color="white"
-        >
-          REGISTER
-        </Text>
-      </Button>
-      </VStack>
+          <Field marginTop="20px" label="Username" required>
+            <InputGroup flex="1" startElement={<LuUser />}>
+              <Input
+                placeholder="Username"
+                w="308px"
+                name="username"
+                value={userData.username}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.username ? "error" : ""}
+              />
+            </InputGroup>
+          </Field>
+          <Field
+            marginTop="10px"
+            label="Email"
+            required
+            helperText="We'll never share your email."
+          >
+            <InputGroup flex="1" startElement={<LuUser />}>
+              <Input
+                placeholder="Email"
+                w="308px"
+                name="email"
+                value={userData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.email ? "error" : ""}
+              />
+            </InputGroup>
+          </Field>
+          <Field w="308px" marginTop="10px" label="Password" required>
+            <PasswordInput
+              placeholder="Password"
+              name="password_hash"
+              value={userData.password_hash}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.password_hash ? "error" : ""}
+            />
+          </Field>
+          <Field w="308px" marginTop="10px" label="Confirm Password" required>
+            <PasswordInput
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              value={userData.confirmPassword}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.confirmPassword ? "error" : ""}
+            />
+          </Field>
+          <br />
+          {errorMessage && (
+            <Stack gap="2" width="308px">
+              <Alert status="error" title={errorMessage} />
+            </Stack>
+          )}
+          {/* Display error message */}
+          <br />
+          <Button
+            backgroundColor="#CF64EE"
+            width="308px"
+            h="50px"
+            borderRadius="100px"
+            marginBottom="25px"
+            onClick={handleAddUserForm}
+          >
+            <Text
+              fontWeight="800"
+              fontSize="16px"
+              letterSpacing="0.9px"
+              color="white"
+            >
+              REGISTER
+            </Text>
+          </Button>
+        </VStack>
       </Group>
       <Toaster />
     </VStack>
