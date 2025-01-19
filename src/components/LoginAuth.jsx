@@ -44,8 +44,9 @@ const CardWithForm = ({ isAuthentificated }) => {
     }
   };
   return (
+
     <DialogRoot placement="center" id={"authDialog"}>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
             className="usericon"
@@ -54,7 +55,7 @@ const CardWithForm = ({ isAuthentificated }) => {
           />
         </a>
       </DialogTrigger>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <button style={{ display: "none" }} id="menu-signin-trigger">
           Open Sign In
         </button>
