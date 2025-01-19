@@ -1,11 +1,13 @@
-import { Box, HStack, VStack, Image } from "@chakra-ui/react";
+import { Box, HStack, VStack, Image, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import {
   DialogBody,
   DialogContent,
   DialogRoot,
+  DialogFooter,
   DialogCloseTrigger,
   DialogTrigger,
+  DialogActionTrigger,
 } from "./ui/dialog";
 import { useRef } from "react";
 import Login from "./Login";
@@ -13,13 +15,26 @@ import SignUp from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
 import "../styles/login.css";
 
-const CardWithForm = () => {
-  const ref = useRef < HTMLInputElement > null;
+const CardWithForm = ({ isAuthentificated }) => {
   const [formType, setFormType] = useState("login");
+  const closeDialogRef = useRef(null); // Ref to programmatically trigger DialogCloseTrigger
+
+  const handleClose = () => {
+    if (closeDialogRef.current) {
+      closeDialogRef.current.click(); // Programmatically trigger close button
+    }
+  };
+
   const renderFormContent = () => {
     switch (formType) {
       case "login":
-        return <Login onFormSwitch={setFormType} />;
+        return (
+          <Login
+            onFormSwitch={setFormType}
+            onLoginSuccess={handleClose}
+            isAuthentificated={isAuthentificated}
+          />
+        );
       case "signup":
         return <SignUp onFormSwitch={setFormType} />;
       case "forgotPassword":
@@ -29,12 +44,8 @@ const CardWithForm = () => {
     }
   };
   return (
-    <DialogRoot
-      placement="center"
-      initialFocusEl={() => ref.current}
-      //size={["100%", "100%", "lg"]}
-      //className="dialog-root"
-    >
+
+    <DialogRoot placement="center" id={"authDialog"}>
       <DialogTrigger>
         <a href="#" style={{ cursor: "pointer" }}>
           <img
@@ -49,7 +60,6 @@ const CardWithForm = () => {
           Open Sign In
         </button>
       </DialogTrigger>
-      
       <DialogContent
         maxWidth="1100px"
         pt="16px"
@@ -57,7 +67,6 @@ const CardWithForm = () => {
         backdropFilter="blur(10px)"
       >
         <DialogBody Width="auto">
-          <DialogCloseTrigger size='md' bg='wheat' m='2'/>
           <HStack spacing={8} align="stretch" wrap="wrap">
             {/* Left section with image */}
             <Box
@@ -93,6 +102,17 @@ const CardWithForm = () => {
             </VStack>
           </HStack>
         </DialogBody>
+        <DialogFooter>
+          <DialogActionTrigger>
+            <Button
+              as="div"
+              ref={closeDialogRef}
+              variant="outline"
+              display={"none"}
+            />
+            <DialogCloseTrigger size="md" bg="wheat" m="2" />
+          </DialogActionTrigger>
+        </DialogFooter>
       </DialogContent>
     </DialogRoot>
   );
