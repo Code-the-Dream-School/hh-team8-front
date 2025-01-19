@@ -4,14 +4,15 @@ import {
   Badge, 
   Button, 
   IconButton, 
-  Stack } from "@chakra-ui/react";
-  import {
-    MenuContent,
-    MenuItem,
-    MenuRoot,
-    MenuSeparator,
-    MenuTrigger,
-  } from "../components/ui/menu";
+  Stack 
+} from "@chakra-ui/react";
+import {
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuSeparator,
+  MenuTrigger,
+} from "../components/ui/menu";
 import Comments from "../components/Comments";
 
 

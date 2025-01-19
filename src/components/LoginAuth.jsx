@@ -44,6 +44,7 @@ const CardWithForm = ({ isAuthentificated }) => {
     }
   };
   return (
+
     <DialogRoot placement="center" id={"authDialog"}>
       <DialogTrigger>
         <a href="#" style={{ cursor: "pointer" }}>
