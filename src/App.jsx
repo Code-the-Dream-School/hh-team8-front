@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./views/HomePage";
 import ShareAProject from "./views/ShareAProject";
 import ExploreProjects from "./views/ExploreProjects";
-
+import PrivateRoute from "./views/PrivateRoute";
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
@@ -30,7 +30,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
-        <Route path="/share-project" element={<ShareAProject />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/share-project" element={<ShareAProject />} />
+        </Route>
         <Route path="/explore-project" element={<ExploreProjects />} />
         <Route path="/message" element={<h1>{message}</h1>} />
       </Routes>
