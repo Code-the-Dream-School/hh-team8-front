@@ -7,7 +7,7 @@ import {
   DialogBody,
   DialogCloseTrigger,
 } from "./ui/dialog";
-import { Toaster, toaster } from "../components/ui/toaster";
+import { toaster } from "../components/ui/toaster";
 import { Alert } from "../components/ui/alert"
 import { jwtDecode } from "jwt-decode";
 
