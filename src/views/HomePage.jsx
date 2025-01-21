@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@chakra-ui/react";
 import { Field } from "../components/ui/field";
 import { Button } from "../components/ui/button";
@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../components/ui/toaster";
 const HomePage = () => {
   const storedAuth = JSON.parse(localStorage.getItem("auth"));
+  const [databoard, setDataboard] = useState({
+    projects: 0,
+    users: 0,
+    comments: 0,
+  });
   const navigate = useNavigate();
 
   const handleAuthentificationCheck = () => {
@@ -26,6 +31,33 @@ const HomePage = () => {
     }
   };
 
+  useEffect(() => {
+    // Fetch data from JSON Server
+    const fetchDashboardData = async () => {
+      try {
+        //const response = await fetch("http://localhost:8001/api/v1/dashboard");
+        const url = "http://localhost:8001/api/v1/dashboard";
+        //const token = JSON.parse(localStorage.getItem("auth"));
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            //Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
+        });
+        if (response.ok) {
+          const dashboardData = await response.json();
+          setDataboard(dashboardData.data);
+        } else {
+          console.error("Failed to get dashboard data from the db");
+        }
+      } catch (error) {
+        console.error("Error get dashboard data:", error);
+      }
+    };
+
+    fetchDashboardData();
+  }, []); // Run only once when the component mounts
   return (
     <div className="sections-container">
       <div className="section1">
@@ -69,9 +101,9 @@ const HomePage = () => {
         next level.
       </p>
       <div className="home-data-rectangle">
-        <p>PROJECTS SHARED: 1,024+</p>
-        <p>REVIEWS GIVEN: 5,678+ </p>
-        <p>ACTIVE STUDENTS: 856+ </p>
+        <p>PROJECTS SHARED: {databoard.projects}</p>
+        <p>REVIEWS GIVEN: {databoard.comments} </p>
+        <p>ACTIVE STUDENTS: {databoard.users} </p>
       </div>
       <div className="section2">
         <img className="section-image" src="./images/sectionimg-2.png"></img>
