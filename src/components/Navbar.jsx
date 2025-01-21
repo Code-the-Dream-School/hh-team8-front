@@ -96,7 +96,9 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-container">
+        <a href='/home'>
         <img src="./images/logo.png" className="logo" alt="Logo" />
+        </a>
         <div className="hamburger-menu">
           <MenuRoot>
             <MenuTrigger asChild>

@@ -7,7 +7,7 @@ import {
   Textarea,
   Button,
   Link,
-  Stack,
+  VStack,
 } from "@chakra-ui/react";
 import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
@@ -23,15 +23,12 @@ const ShareAProject = () => {
     youtube_video_link: "",
     tags: [],
   });
-  const [errors, setErrors] = useState({
-    github_link: "",
-    youtube_video_link: "",
-  });
 
   const validateUrl = (url) => {
     const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(\/[\w-.]*)*(\?.+)?$/;
     return urlPattern.test(url);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newProject.tags.length === 0) {
@@ -43,14 +40,20 @@ const ShareAProject = () => {
           label: "x",
         },
       });
-      //console.log("Please select at least one framework/language.");
       return;
     }
-    const newErrors = {};
 
     // Validate GitHub URL (Required)
     if (!newProject.github_link || !validateUrl(newProject.github_link)) {
-      newErrors.github_link = "Please provide a valid GitHub repository URL.";
+      toaster.create({
+        title: "Please provide a valid GitHub repository URL.",
+        type: "warning",
+        duration: 4000,
+        action: {
+          label: "x",
+        },
+      });
+      return;
     }
 
     // Validate Live Demo URL (Optional, only if provided)
@@ -58,36 +61,17 @@ const ShareAProject = () => {
       newProject.youtube_video_link &&
       !validateUrl(newProject.youtube_video_link)
     ) {
-      newErrors.youtube_video_link = "Please provide a valid Live Demo URL.";
-    }
-    console.log(Object.keys(newErrors).length);
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors); // Display errors
-
-      if (errors.github_link) {
-        console.log(errors.github_link);
-        toaster.create({
-          title: errors.github_link,
-          type: "warning",
-          duration: 4000,
-          action: {
-            label: "x",
-          },
-        });
-      }
-      if (errors.youtube_video_link) {
-        console.log(errors.youtube_video_link);
-        toaster.create({
-          title: errors.youtube_video_link,
-          type: "warning",
-          duration: 4000,
-          action: {
-            label: "x",
-          },
-        });
-      }
+      toaster.create({
+        title: "Please provide a valid Live Demo URL.",
+        type: "warning",
+        duration: 4000,
+        action: {
+          label: "x",
+        },
+      });
       return;
     }
+
     try {
       const response = await fetch("http://localhost:8001/api/v1/addProject", {
         method: "POST",
@@ -99,7 +83,7 @@ const ShareAProject = () => {
       });
       if (response.ok) {
         toaster.create({
-          title: "Project submitted succesfully!",
+          title: "Project submitted successfully!",
           type: "success",
           duration: 8000,
           action: {
@@ -115,7 +99,6 @@ const ShareAProject = () => {
         });
       } else {
         console.error("Failed to add project:", response.statusText);
-        //console.error("Failed to submit project");
       }
     } catch (error) {
       toaster.create({
@@ -137,7 +120,7 @@ const ShareAProject = () => {
         : [...prev.tags, value],
     }));
   };
-  //const isSubmitEnabled = newProject.tags.length > 0;
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="share-project-container">
@@ -317,8 +300,8 @@ const ShareAProject = () => {
               }
             />
           </Field>
-          <Field marginBottom={"20%"} marginTop={10}>
-            <Stack direction="row" h="20">
+          <Field marginBottom={"20%"} marginTop={10} display='flex' alignItems='center'>
+            <VStack direction="row" h="20" justifyContent="center" alignItems="center">
               <Button
                 className="sp-button"
                 variant="solid"
@@ -328,12 +311,12 @@ const ShareAProject = () => {
                 SUBMIT PROJECT
               </Button>
               <Link
-                style={{ fontSize: "20px", color: "#63E9EE", padding: "40px" }}
+                style={{ fontSize: "20px", color: "#63E9EE", alignItems: "center", display: 'flex' }}
                 href="/explore-project"
               >
                 Go to explore projects <LuExternalLink />
               </Link>
-            </Stack>
+            </VStack>
           </Field>
           <Toaster />
         </div>
