@@ -9,7 +9,6 @@ import {
   Link,
   Stack,
 } from "@chakra-ui/react";
-import { Alert } from "../components/ui/alert";
 import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
 import { Checkbox } from "../components/ui/checkbox";
@@ -24,7 +23,6 @@ const ShareAProject = () => {
     youtube_video_link: "",
     tags: [],
   });
-  const [hasError, setHasError] = useState(false); // Validation state
   const [errors, setErrors] = useState({
     github_link: "",
     youtube_video_link: "",
@@ -37,7 +35,6 @@ const ShareAProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newProject.tags.length === 0) {
-      setHasError(true); // Show error if no checkbox is selected
       toaster.create({
         title: "Please select at least one framework/language.",
         type: "warning",
@@ -67,10 +64,10 @@ const ShareAProject = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors); // Display errors
 
-      if (newErrors.github_link) {
-        console.log(newErrors.github_link);
+      if (errors.github_link) {
+        console.log(errors.github_link);
         toaster.create({
-          title: newErrors.github_link,
+          title: errors.github_link,
           type: "warning",
           duration: 4000,
           action: {
@@ -78,10 +75,10 @@ const ShareAProject = () => {
           },
         });
       }
-      if (newErrors.youtube_video_link) {
-        console.log(newErrors.youtube_video_link);
+      if (errors.youtube_video_link) {
+        console.log(errors.youtube_video_link);
         toaster.create({
-          title: newErrors.youtube_video_link,
+          title: errors.youtube_video_link,
           type: "warning",
           duration: 4000,
           action: {
@@ -139,7 +136,6 @@ const ShareAProject = () => {
         ? prev.tags.filter((tags) => tags !== value)
         : [...prev.tags, value],
     }));
-    setHasError(false); // Clear error on any selection
   };
   //const isSubmitEnabled = newProject.tags.length > 0;
   return (
