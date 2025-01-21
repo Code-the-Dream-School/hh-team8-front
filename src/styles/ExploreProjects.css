@@ -74,7 +74,44 @@
     width: 30px;
     height: auto;
 }
-
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    text-align: center; /* Center the logo */
+}
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */       
+}
+.ctd-logo {
+    width: 199px;
+    height: 72px;
+    margin: 0 auto; /* Center the logo horizontally */
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.like-container {
+    position: relative;
+}  
+.like-count {
+    position: absolute;
+    left: -20px; /* Default offset */
+    top: 8px;
+    transform: translateX(calc(-1 * (0.5em * (var(--digit-count, 1) - 1)))); /* Adjust dynamically */
+    font-size: 14px;
+}
+.signin-alert{
+    position: absolute;
+    top: -80px; /* Keeps the alert at a fixed vertical position */
+    width: auto;
+}
+.alertbox{
+    padding-right: 4px;
+    padding-left: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 768px) {
     .explore-projects-container{
         margin-top: 120px;

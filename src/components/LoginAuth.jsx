@@ -1,7 +1,7 @@
 import { Box, HStack, VStack, Image, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../components/ui/toaster";
+import { toaster } from "../components/ui/toaster";
 import {
   DialogBody,
   DialogHeader,
@@ -41,7 +41,7 @@ const CardWithForm = ({ isAuthentificated }) => {
         const data = await response.json();
         toaster.create({
           title: "Logout",
-          description: data.message,
+          description: `${data.message}!`,
           type: "success",
           duration: 4000,
           action: {
@@ -136,7 +136,7 @@ const CardWithForm = ({ isAuthentificated }) => {
               </DialogFooter>
             </DialogContent>
           </DialogRoot>
-          <Toaster />
+          <toaster />
         </div>
       ) : (
         <DialogRoot placement="center" id={"authDialog"}>
