@@ -1,6 +1,7 @@
 import { Box, HStack, VStack, Image, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Toaster, toaster } from "../components/ui/toaster";
 import {
   DialogBody,
   DialogHeader,
@@ -21,10 +22,55 @@ import "../styles/login.css";
 const CardWithForm = ({ isAuthentificated }) => {
   const [formType, setFormType] = useState("login");
   const closeDialogRef = useRef(null); // Ref to programmatically trigger DialogCloseTrigger
-
-  const storedAuth = JSON.parse(localStorage.getItem("auth"));
+  const url = "http://localhost:8001/api/v1/logout";
+  const token = JSON.parse(localStorage.getItem("auth"));
   const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    //e.preventDefault();
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        toaster.create({
+          title: "Logout",
+          description: data.message,
+          type: "success",
+          duration: 4000,
+          action: {
+            label: "x",
+          },
+        });
+      } else {
+        console.error("Failed to logout!");
+        toaster.create({
+          title: "Logout unsuccessful",
+          type: "error",
+          action: {
+            label: "x",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toaster.create({
+        title: error,
+        type: "error",
+        action: {
+          label: "x",
+        },
+      });
+    }
+  };
   const handleLogout = () => {
+    handleSignOut();
     localStorage.removeItem("auth"); // Clear auth data the logout api will be call here
     navigate("/"); // Redirect to Home
   };
@@ -55,7 +101,7 @@ const CardWithForm = ({ isAuthentificated }) => {
   };
   return (
     <>
-      {storedAuth ? (
+      {token ? (
         <div>
           <DialogRoot role="alertdialog" placement="top">
             <DialogTrigger asChild>
@@ -90,6 +136,7 @@ const CardWithForm = ({ isAuthentificated }) => {
               </DialogFooter>
             </DialogContent>
           </DialogRoot>
+          <Toaster />
         </div>
       ) : (
         <DialogRoot placement="center" id={"authDialog"}>
