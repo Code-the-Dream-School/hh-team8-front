@@ -7,6 +7,8 @@ import {
   Textarea,
   Button,
 } from "@chakra-ui/react";
+import { Link, Stack } from "@chakra-ui/react";
+import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
 import { Checkbox } from "../components/ui/checkbox";
 import { Toaster, toaster } from "../components/ui/toaster";
@@ -253,31 +255,20 @@ const ShareAProject = () => {
               }
             />
           </Field>
-          <Field
-            marginTop="36px"
-            label={
-              <span style={{ fontSize: "20px" }}>Comments (Optional)</span>
-            }
-          >
-            <Textarea
-              variant="subtle"
-              marginTop="20px"
-              width="100%"
-              height="212px"
-              backgroundColor="rgba(255, 255, 255, 0.16)"
-              placeholder="Do you have any comments? (Optional)"
-              borderRadius="8px"
-              border="2px solid white"
-              /*value={newProject.comments}
-              onChange={(e) =>
-                setNewProject({ ...newProject, comments: e.target.value })
-              }*/
-            />
-            <Button className="sp-button" variant="solid" type="submit">
-              SUBMIT PROJECT
-            </Button>
-            <Toaster />
+          <Field marginBottom={"20%"} marginTop={10}>
+            <Stack direction="row" h="20">
+              <Button className="sp-button" variant="solid" type="submit">
+                SUBMIT PROJECT
+              </Button>
+              <Link
+                style={{ fontSize: "20px", color: "#63E9EE", padding: "60px" }}
+                href="/explore-project"
+              >
+                Go to explore projects <LuExternalLink />
+              </Link>
+            </Stack>
           </Field>
+          <Toaster />
         </div>
       </div>
       <img className="ctd-logo" src="./images/ctd-logo.png"></img>
