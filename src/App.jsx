@@ -7,6 +7,7 @@ import HomePage from "./views/HomePage";
 import ShareAProject from "./views/ShareAProject";
 import ExploreProjects from "./views/ExploreProjects";
 import PrivateRoute from "./views/PrivateRoute";
+import ResetPasswords from "./components/ResetPassword";
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/share-project" element={<ShareAProject />} />
         </Route>
         <Route path="/explore-project" element={<ExploreProjects />} />
+        <Route path="/reset-password" element={<ResetPasswords />} />
         <Route path="/message" element={<h1>{message}</h1>} />
       </Routes>
     </Provider>
