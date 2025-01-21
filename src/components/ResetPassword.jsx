@@ -1,24 +1,16 @@
 import React, { useState } from "react";
-import {
-  VStack,
-  HStack,
-  Box,
-  Image,
-  Stack,
-  Button,
-  Text,
-  Group,
-} from "@chakra-ui/react";
+import { VStack, Box, Stack, Button, Text, Group } from "@chakra-ui/react";
 import { PasswordInput } from "./ui/password-input";
 import { Field } from "./ui/field";
 import { Toaster, toaster } from "../components/ui/toaster";
 import { Alert } from "../components/ui/alert";
+import { useNavigate } from "react-router-dom";
 import "../styles/ResetPassword.css";
 
 const ResetPassword = () => {
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const token = new URLSearchParams(window.location.search).get("token");
   const [errorMessage, setErrorMessage] = useState("");
   const [userData, setUserData] = useState({
@@ -94,7 +86,9 @@ const ResetPassword = () => {
       );
 
       if (response.ok) {
-        setMessage("Password reset successful!");
+        setMessage(
+          "Password reset successful, You can now login using the correct credentials!"
+        );
         toaster.create({
           title: "Password reset",
           description: message,
@@ -104,6 +98,7 @@ const ResetPassword = () => {
             label: "x",
           },
         });
+        navigate("/Home");
       } else {
         const errorData = await response.json();
         setMessage(errorData.message || "Error resetting password.");

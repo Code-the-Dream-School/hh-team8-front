@@ -37,7 +37,7 @@ const HomePage = () => {
       try {
         //const response = await fetch("http://localhost:8001/api/v1/dashboard");
         const url = "http://localhost:8001/api/v1/dashboard";
-        const token = JSON.parse(localStorage.getItem("auth"));
+        //const token = JSON.parse(localStorage.getItem("auth"));
         const response = await fetch(url, {
           method: "GET",
           headers: {
