@@ -1,134 +1,136 @@
-.explore-projects-container{
-    margin-top: 192px;
+.explore-projects-container {
+  margin-top: 192px;
 }
-.ep-header{
-    font-size: 48px;
-    font-weight: 600;
+.ep-header {
+  font-size: 48px;
+  font-weight: 600;
 }
 .projects-grid {
-    margin-top: 48px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    row-gap: 70px;
-    width: 100%;
-    margin-left: 20px;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  row-gap: 70px;
+  width: 100%;
+  margin-left: 20px;
 }
-.project-tile{
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    height: 280px;
-    width: 338px;
-    border-color: rgba(255, 255, 255, 0.24);
-    border-width: 0.1em;
-    position: relative;
+.project-tile {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  height: 280px;
+  width: 338px;
+  border-color: rgba(255, 255, 255, 0.24);
+  border-width: 0.1em;
+  position: relative;
 }
-.project-details{
-    padding: 59px 16px 80px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.project-details {
+  padding: 59px 16px 80px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.project-name{  
-    font-size: 24px;
-    font-weight: 600;
+.project-name {
+  font-size: 24px;
+  font-weight: 600;
 }
-.framework-badges{
-    display: flex;
-    gap: 8px;
-    height: 28px;   
+.framework-badges {
+  display: flex;
+  gap: 8px;
+  height: 28px;
 }
-.tile-buttons{
-    display: flex;
-    margin-top: 12px;
-    gap: 12px;
+.tile-buttons {
+  display: flex;
+  margin-top: 12px;
+  gap: 12px;
 }
-.live-demo-button{
-    width: 145px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.24);
+.live-demo-button {
+  width: 145px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.24);
 }
-.git-link-button{
-    width: 145px;
-    height: 40px;
-    background-color: rgba(99, 233, 238, 0.24);
+.git-link-button {
+  width: 145px;
+  height: 40px;
+  background-color: rgba(99, 233, 238, 0.24);
 }
-.like-comment-details{
-    position: absolute;
-    top: 5%;
-    right: 12px; 
+.like-comment-details {
+  position: absolute;
+  top: 5%;
+  right: 12px;
 }
-.like-img{
-    width: 30px;
-    height: auto;
+.like-img {
+  width: 30px;
+  height: auto;
 }
-.dislike-img{
-    width: 30px;
-    height: auto;
+.dislike-img {
+  width: 30px;
+  height: auto;
 }
-.details-img{
-    width: 30px;
-    height: auto;
+.details-img {
+  width: 30px;
+  height: auto;
 }
-.comments-img{
-    width: 30px;
-    height: auto;
+.comments-img {
+  width: 30px;
+  height: auto;
 }
 footer {
-    margin-top: auto; /* Push the footer to the bottom */
-    text-align: center; /* Center the logo */
+  margin-top: auto; /* Push the footer to the bottom */
+  text-align: center; /* Center the logo */
 }
-.page-wrapper{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full viewport height */       
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
 }
 .ctd-logo {
-    width: 199px;
-    height: 72px;
-    margin: 0 auto; /* Center the logo horizontally */
-    margin-top: 50px;
-    margin-bottom: 40px;
+  width: 199px;
+  height: 72px;
+  margin: 0 auto; /* Center the logo horizontally */
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 .like-container {
-    position: relative;
-}  
+  position: relative;
+}
 .like-count {
-    position: absolute;
-    left: -20px; /* Default offset */
-    top: 8px;
-    transform: translateX(calc(-1 * (0.5em * (var(--digit-count, 1) - 1)))); /* Adjust dynamically */
-    font-size: 14px;
+  position: absolute;
+  left: -20px; /* Default offset */
+  top: 8px;
+  transform: translateX(
+    calc(-1 * (0.5em * (var(--digit-count, 1) - 1)))
+  ); /* Adjust dynamically */
+  font-size: 14px;
 }
-.signin-alert{
-    position: absolute;
-    top: -80px; /* Keeps the alert at a fixed vertical position */
-    width: auto;
+.signin-alert {
+  position: absolute;
+  top: -80px; /* Keeps the alert at a fixed vertical position */
+  width: auto;
 }
-.alertbox{
-    padding-right: 4px;
-    padding-left: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.alertbox {
+  padding-right: 4px;
+  padding-left: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 768px) {
-    .explore-projects-container{
-        margin-top: 120px;
-        min-width: 370px;
-    }
-    .ep-header{
-        text-align: center;
-        font-size: 32px;
-    }
-    .projects-grid {
-        margin-top: 48px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        width: 100%;
-        margin-left: 0px;
-    }   
+  .explore-projects-container {
+    margin-top: 120px;
+    min-width: 370px;
+  }
+  .ep-header {
+    text-align: center;
+    font-size: 32px;
+  }
+  .projects-grid {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-left: 0px;
+  }
 }
