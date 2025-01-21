@@ -6,7 +6,10 @@ import {
   Fieldset,
   Textarea,
   Button,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
+import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
 import { Checkbox } from "../components/ui/checkbox";
 import { Toaster, toaster } from "../components/ui/toaster";
@@ -20,10 +23,71 @@ const ShareAProject = () => {
     youtube_video_link: "",
     tags: [],
   });
+  const [errors, setErrors] = useState({
+    github_link: "",
+    youtube_video_link: "",
+  });
 
+  const validateUrl = (url) => {
+    const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(\/[\w-.]*)*(\?.+)?$/;
+    return urlPattern.test(url);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (newProject.tags.length === 0) {
+      toaster.create({
+        title: "Please select at least one framework/language.",
+        type: "warning",
+        duration: 4000,
+        action: {
+          label: "x",
+        },
+      });
+      //console.log("Please select at least one framework/language.");
+      return;
+    }
+    const newErrors = {};
 
+    // Validate GitHub URL (Required)
+    if (!newProject.github_link || !validateUrl(newProject.github_link)) {
+      newErrors.github_link = "Please provide a valid GitHub repository URL.";
+    }
+
+    // Validate Live Demo URL (Optional, only if provided)
+    if (
+      newProject.youtube_video_link &&
+      !validateUrl(newProject.youtube_video_link)
+    ) {
+      newErrors.youtube_video_link = "Please provide a valid Live Demo URL.";
+    }
+    console.log(Object.keys(newErrors).length);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors); // Display errors
+
+      if (errors.github_link) {
+        console.log(errors.github_link);
+        toaster.create({
+          title: errors.github_link,
+          type: "warning",
+          duration: 4000,
+          action: {
+            label: "x",
+          },
+        });
+      }
+      if (errors.youtube_video_link) {
+        console.log(errors.youtube_video_link);
+        toaster.create({
+          title: errors.youtube_video_link,
+          type: "warning",
+          duration: 4000,
+          action: {
+            label: "x",
+          },
+        });
+      }
+      return;
+    }
     try {
       const response = await fetch("http://localhost:8001/api/v1/addProject", {
         method: "POST",
@@ -73,7 +137,7 @@ const ShareAProject = () => {
         : [...prev.tags, value],
     }));
   };
-
+  //const isSubmitEnabled = newProject.tags.length > 0;
   return (
     <form onSubmit={handleSubmit}>
       <div className="share-project-container">
@@ -253,31 +317,25 @@ const ShareAProject = () => {
               }
             />
           </Field>
-          <Field
-            marginTop="36px"
-            label={
-              <span style={{ fontSize: "20px" }}>Comments (Optional)</span>
-            }
-          >
-            <Textarea
-              variant="subtle"
-              marginTop="20px"
-              width="100%"
-              height="212px"
-              backgroundColor="rgba(255, 255, 255, 0.16)"
-              placeholder="Do you have any comments? (Optional)"
-              borderRadius="8px"
-              border="2px solid white"
-              /*value={newProject.comments}
-              onChange={(e) =>
-                setNewProject({ ...newProject, comments: e.target.value })
-              }*/
-            />
-            <Button className="sp-button" variant="solid" type="submit">
-              SUBMIT PROJECT
-            </Button>
-            <Toaster />
+          <Field marginBottom={"20%"} marginTop={10}>
+            <Stack direction="row" h="20">
+              <Button
+                className="sp-button"
+                variant="solid"
+                type="submit"
+                //disabled={!isSubmitEnabled}
+              >
+                SUBMIT PROJECT
+              </Button>
+              <Link
+                style={{ fontSize: "20px", color: "#63E9EE", padding: "40px" }}
+                href="/explore-project"
+              >
+                Go to explore projects <LuExternalLink />
+              </Link>
+            </Stack>
           </Field>
+          <Toaster />
         </div>
       </div>
       <img className="ctd-logo" src="./images/ctd-logo.png"></img>
