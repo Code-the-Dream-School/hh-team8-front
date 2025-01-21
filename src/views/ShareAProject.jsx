@@ -6,8 +6,10 @@ import {
   Fieldset,
   Textarea,
   Button,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
-import { Link, Stack } from "@chakra-ui/react";
+import { Alert } from "../components/ui/alert";
 import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
 import { Checkbox } from "../components/ui/checkbox";
@@ -22,10 +24,73 @@ const ShareAProject = () => {
     youtube_video_link: "",
     tags: [],
   });
+  const [hasError, setHasError] = useState(false); // Validation state
+  const [errors, setErrors] = useState({
+    github_link: "",
+    youtube_video_link: "",
+  });
 
+  const validateUrl = (url) => {
+    const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(\/[\w-.]*)*(\?.+)?$/;
+    return urlPattern.test(url);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (newProject.tags.length === 0) {
+      setHasError(true); // Show error if no checkbox is selected
+      toaster.create({
+        title: "Please select at least one framework/language.",
+        type: "warning",
+        duration: 4000,
+        action: {
+          label: "x",
+        },
+      });
+      //console.log("Please select at least one framework/language.");
+      return;
+    }
+    const newErrors = {};
 
+    // Validate GitHub URL (Required)
+    if (!newProject.github_link || !validateUrl(newProject.github_link)) {
+      newErrors.github_link = "Please provide a valid GitHub repository URL.";
+    }
+
+    // Validate Live Demo URL (Optional, only if provided)
+    if (
+      newProject.youtube_video_link &&
+      !validateUrl(newProject.youtube_video_link)
+    ) {
+      newErrors.youtube_video_link = "Please provide a valid Live Demo URL.";
+    }
+    console.log(Object.keys(newErrors).length);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors); // Display errors
+
+      if (newErrors.github_link) {
+        console.log(newErrors.github_link);
+        toaster.create({
+          title: newErrors.github_link,
+          type: "warning",
+          duration: 4000,
+          action: {
+            label: "x",
+          },
+        });
+      }
+      if (newErrors.youtube_video_link) {
+        console.log(newErrors.youtube_video_link);
+        toaster.create({
+          title: newErrors.youtube_video_link,
+          type: "warning",
+          duration: 4000,
+          action: {
+            label: "x",
+          },
+        });
+      }
+      return;
+    }
     try {
       const response = await fetch("http://localhost:8001/api/v1/addProject", {
         method: "POST",
@@ -74,8 +139,9 @@ const ShareAProject = () => {
         ? prev.tags.filter((tags) => tags !== value)
         : [...prev.tags, value],
     }));
+    setHasError(false); // Clear error on any selection
   };
-
+  //const isSubmitEnabled = newProject.tags.length > 0;
   return (
     <form onSubmit={handleSubmit}>
       <div className="share-project-container">
@@ -257,11 +323,16 @@ const ShareAProject = () => {
           </Field>
           <Field marginBottom={"20%"} marginTop={10}>
             <Stack direction="row" h="20">
-              <Button className="sp-button" variant="solid" type="submit">
+              <Button
+                className="sp-button"
+                variant="solid"
+                type="submit"
+                //disabled={!isSubmitEnabled}
+              >
                 SUBMIT PROJECT
               </Button>
               <Link
-                style={{ fontSize: "20px", color: "#63E9EE", padding: "60px" }}
+                style={{ fontSize: "20px", color: "#63E9EE", padding: "40px" }}
                 href="/explore-project"
               >
                 Go to explore projects <LuExternalLink />
