@@ -6,7 +6,7 @@ import { InputGroup } from "./ui/input-group";
 import { LuUser } from "react-icons/lu";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../components/ui/toaster";
+import { toaster } from "../components/ui/toaster";
 const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
   const navigate = useNavigate();
   const url = "http://localhost:8001/api/v1/login";
@@ -54,8 +54,9 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
         navigate("/"); // Redirect to share-project after successful login
         toaster.create({
           title: "Login successful!",
+          description: "Successfully logged in!",
           type: "success",
-          duration: 8000,
+          duration: 4000,
           action: {
             label: "x",
           },
@@ -159,7 +160,7 @@ const Login = ({ onFormSwitch, onLoginSuccess, isAuthentificated }) => {
           </Button>
         </VStack>
       </Group>
-      <Toaster />
+      <toaster />
     </VStack>
   );
 };

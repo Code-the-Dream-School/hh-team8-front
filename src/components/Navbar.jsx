@@ -118,7 +118,7 @@ const Navbar = () => {
               <MenuItem value="new-txt2" as="a" href="/home">
                 Home
               </MenuItem>
-              <MenuItem value="new-txt">About Us</MenuItem>
+              <MenuItem value="new-txt" as="a" href="/about-us">About Us</MenuItem>
             </MenuContent>
           </MenuRoot>
         </div>
@@ -126,7 +126,7 @@ const Navbar = () => {
           <a className="menulink" href="/home">
             HOME
           </a>
-          <a className="menulink" href="">
+          <a className="menulink" href="/about-us">
             ABOUT US
           </a>
           <LoginAuth isAuthentificated={isAuthentificated} />
