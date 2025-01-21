@@ -22,6 +22,11 @@
   border-color: rgba(255, 255, 255, 0.24);
   border-width: 0.1em;
   position: relative;
+  box-shadow: 4px 4px 10px rgba(99, 233, 238, 0.5); /* Horizontal, Vertical, Blur, Spread */
+  transition: transform 0.5s ease;
+}
+.project-tile:hover {
+    transform: scale(1.04); /* Zoom in */
 }
 .project-details {
   padding: 59px 16px 80px 16px;

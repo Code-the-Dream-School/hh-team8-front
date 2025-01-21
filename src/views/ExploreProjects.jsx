@@ -10,6 +10,7 @@ import {
 } from "../components/ui/menu";
 import { StatRoot, StatValueText } from "../components/ui/stat"
 import Comments from "../components/Comments";
+import Details from "../components/Details"
 import { Toaster, toaster } from "../components/ui/toaster";
 import { jwtDecode } from "jwt-decode";
 
@@ -17,10 +18,15 @@ const ExploreProjects = () => {
   const [projects, setProjects] = useState([]);
   const [activeProjectId, setActiveProjectId] = useState(null);
   const [activeProjectOwnerId, setActiveProjectOwnerId] = useState(null);
+  const [activeProjectDetails, setActiveProjectDetails] = useState(null);
+
   const token = JSON.parse(localStorage.getItem("auth"));
   const rawToken = localStorage.getItem("auth");
   const { user_id: userId, username } = rawToken ? jwtDecode(rawToken) : {};
 
+  const truncateTitle = (title, maxLength) => {
+    return title.length > maxLength ? `${title.slice(0, maxLength)}...` : title;
+  };
   // Fetch all projects on component mount
   useEffect(() => {
     const fetchProjects = async () => {
@@ -86,6 +92,18 @@ const ExploreProjects = () => {
         triggerButton.click();
       } else {
         console.error("Trigger button not found");
+      }
+    }, 0);
+  };
+
+  const openDetailsModal = (project) => {
+    setActiveProjectDetails(project);
+
+    // Trigger the Details Dialog
+    setTimeout(() => {
+      const triggerButton = document.getElementById("details-trigger");
+      if (triggerButton) {
+        triggerButton.click();
       }
     }, 0);
   };
@@ -227,6 +245,9 @@ const ExploreProjects = () => {
                           ></img>
                         </MenuTrigger>
                         <MenuContent className="menu-content">
+                          <MenuItem onClick={() => openDetailsModal(project)}>
+                          Details
+                          </MenuItem>
                           {Number(userId) === Number(project.created_by) && (
                             <>
                               <MenuItem
@@ -239,7 +260,20 @@ const ExploreProjects = () => {
                               <MenuSeparator />
                             </>
                           )}
-                          <MenuItem value="new-txt2" as="a">
+                          <MenuItem 
+                          value="new-txt2"
+                          as="a"
+                          onClick={() => {
+                            toaster.create({
+                              title: "Project reported to admin!",
+                              description: "Thank you for bringing this to our attention.",
+                              type: "info",
+                              duration: 4000,
+                              action: {
+                                label: "x",
+                              },
+                            });
+                          }}>
                             Report ⚠️
                           </MenuItem>
                         </MenuContent>
@@ -295,7 +329,7 @@ const ExploreProjects = () => {
                     day: "numeric",
                   })}
                 </p>
-                <p className="project-name">{project.name}</p>
+                <p className="project-name">{truncateTitle(project.name, 16)}</p>
                 <p className="ep-username">{project.users.username}</p>
                 <div className="framework-badges">
                   {project.tags
@@ -350,6 +384,15 @@ const ExploreProjects = () => {
                     className="git-link-button"
                     variant="solid"
                     type="submit"
+                    onClick={() => {
+                      const url =
+                        project.github_link.startsWith("http://") ||
+                        project.github_link.startsWith("https://")
+                          ? project.github_link
+                          : `https://${project.github_link}`;
+                      console.log("Opening Github Repository URL:", url);
+                      window.open(url, "_blank");
+                    }}
                   >
                     View on Github
                     <img
@@ -373,6 +416,7 @@ const ExploreProjects = () => {
           projectOwnerId={activeProjectOwnerId}
         />
       )}
+      {activeProjectDetails && <Details project={activeProjectDetails} />}
       <Toaster />
       </div>
       <footer>

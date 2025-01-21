@@ -7,7 +7,7 @@ import {
   Textarea,
   Button,
   Link,
-  Stack,
+  VStack,
 } from "@chakra-ui/react";
 import { LuExternalLink } from "react-icons/lu";
 import { Field } from "../components/ui/field";
@@ -64,10 +64,10 @@ const ShareAProject = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors); // Display errors
 
-      if (errors.github_link) {
-        console.log(errors.github_link);
+      if (newErrors.github_link) {
+        console.log(newErrors.github_link);
         toaster.create({
-          title: errors.github_link,
+          title: newErrors.github_link,
           type: "warning",
           duration: 4000,
           action: {
@@ -75,10 +75,10 @@ const ShareAProject = () => {
           },
         });
       }
-      if (errors.youtube_video_link) {
-        console.log(errors.youtube_video_link);
+      if (newErrors.youtube_video_link) {
+        console.log(newErrors.youtube_video_link);
         toaster.create({
-          title: errors.youtube_video_link,
+          title: newErrors.youtube_video_link,
           type: "warning",
           duration: 4000,
           action: {
@@ -317,8 +317,8 @@ const ShareAProject = () => {
               }
             />
           </Field>
-          <Field marginBottom={"20%"} marginTop={10}>
-            <Stack direction="row" h="20">
+          <Field marginBottom={"20%"} marginTop={10} display='flex' alignItems='center'>
+            <VStack direction="row" h="20" justifyContent="center" alignItems="center">
               <Button
                 className="sp-button"
                 variant="solid"
@@ -328,12 +328,12 @@ const ShareAProject = () => {
                 SUBMIT PROJECT
               </Button>
               <Link
-                style={{ fontSize: "20px", color: "#63E9EE", padding: "40px" }}
+                style={{ fontSize: "20px", color: "#63E9EE", alignItems: "center", display: 'flex' }}
                 href="/explore-project"
               >
                 Go to explore projects <LuExternalLink />
               </Link>
-            </Stack>
+            </VStack>
           </Field>
           <Toaster />
         </div>
