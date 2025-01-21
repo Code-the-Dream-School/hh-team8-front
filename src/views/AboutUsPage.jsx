@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/AboutUs.css";
-import { Box, VStack, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, VStack, Heading, Text } from "@chakra-ui/react";
 import { Separator } from "@chakra-ui/react"
 import { FaTools, FaShareAlt, FaSearch, FaRedo } from "react-icons/fa"; // Example icons
 import { Grid, GridItem, Icon } from "@chakra-ui/react";
